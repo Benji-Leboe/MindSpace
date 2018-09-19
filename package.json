@@ -1,0 +1,24 @@
+{
+  "name": "mindspace",
+  "version": "1.0.0",
+  "description": "MindSpace project with Adelia Tay and Yang Yu for week 5 project @ LHL",
+  "main": "index.js",
+  "engines": {
+    "node": "10.10.0",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benji-Leboe/MindSpace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benji-Leboe/MindSpace/issues"
+  },
+  "homepage": "https://github.com/Benji-Leboe/MindSpace#readme"
+}

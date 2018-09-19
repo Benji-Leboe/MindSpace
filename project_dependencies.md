@@ -3,6 +3,8 @@
 ## Backend/server (ES6)
 
 - NodeJS
+  - Node version 10.10.0
+    - NPM version 6.4.1
   - express
   - bcryptJS
   - cluster
