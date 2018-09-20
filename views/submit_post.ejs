@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
   <% include ./partials/_head>
 </head>
+
 <body>
+
   <header>
     <% include ./partials/_header %>
   </header>
+
   <aside>
     <% include ./partials/_side-nav %>
   </aside>
+
   <aside>
     <% include ./partials/_activity-bar %>
   </aside>
+
   <main class="container">
     <section class="create-post">
         <h2>Create Post</h2>
@@ -20,12 +26,14 @@
           <textarea name="text" placeholder="External URL"></textarea>
           <textarea name="text" placeholder="Title"></textarea>
           <textarea name="text" placeholder="Description"></textarea>
-          <input class="create-post" type="submit" value="Create">
+          <button class="create-post" type="submit">Create Post</button>
         </form>
       </section>
   </main>
+
   <footer>
     <% include ./partials/_footer %>
   </footer>
+
 </body>
 </html>
