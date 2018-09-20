@@ -29,7 +29,7 @@ const usersRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, 
+//         The :status token will be colored red for server error codes, yellow for client error codes,
 //         cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
@@ -94,7 +94,7 @@ if (cluster.isMaster) {
     res.render("subject_list");
   });
 
-  // view post in specific subject 
+  // view post in specific subject
   //**TODO: Make AJAX function to render over posts
   app.get("/:subject_id/:post_id", (req, res) => {
     res.render('view_post');
@@ -113,18 +113,18 @@ if (cluster.isMaster) {
   });
 
   // clear user session
-  app.post('/logout', (req, res) = {
+  app.post('/logout', (req, res) => {
 
   });
 
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-    
+
   });
 
   // edit post
-  // (user can only edit own post) 
+  // (user can only edit own post)
   app.put('/post/:post_id', (req, res) => {
 
   });
@@ -134,14 +134,14 @@ if (cluster.isMaster) {
 
   });
 
-  // like post, increment like count, add post to user likes 
+  // like post, increment like count, add post to user likes
   // (user cannot like own post)
   app.put('/like', (req, res) => {
 
   });
 
   // rate post, calculate average and display
-  // (user cannot rate own post) 
+  // (user cannot rate own post)
   app.put('/rate', (req, res) => {
 
   });
