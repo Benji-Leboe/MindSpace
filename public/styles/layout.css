@@ -1,3 +1,36 @@
+.card-deck {
+  margin-bottom: 2em;
+}
+
+.card {
+  position: relative;
+}
+
+.card .card-img-top {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  transition: .2s ease;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  opacity: 0.6;
+}
+
+.card .card-img-overlay {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.card .card-img-overlay:hover {
+  opacity: 1;
+  color: white;
+}
+
 body {
   background-color: #EEE;
   font-family: 'Montserrat', sans-serif;
