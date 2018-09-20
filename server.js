@@ -2,30 +2,45 @@
 
 require('dotenv').config();
 
-const cluster       = require('cluster');
+const cluster          = require('cluster');
 
-const PORT          = process.env.PORT || 8080;
-const ENV           = process.env.ENV || "development";
-const $             = process.env;
+const PORT             = process.env.PORT || 8080;
+const ENV              = process.env.ENV || "development";
+const $                = process.env;
 
-const express       = require("express");
-const bodyParser    = require("body-parser");
-const sass          = require("node-sass-middleware");
-const cookieSession = require('cookie-session');
-const memjs         = require('memjs');
-const bcrypt        = require('bcryptjs');
-const app           = express();
+const express          = require("express");
+const bodyParser       = require("body-parser");
+const sass             = require("node-sass-middleware");
+const session          = require('express-session');
 
-const knexConfig    = require("./knexfile");
-const knex          = require("knex")(knexConfig[ENV]);
-const morgan        = require('morgan');
-const knexLogger    = require('knex-logger');
-const helper        = require('./helper_functions/helpers');
+// memory cache
+const memjs            = require('memjs');
+const MemcachedStore   = require('connect-memjs')(session);
+const client           = memjs.Client.create(process.env.MEMCACHIER_SERVERS || ['127.0.0.1:11211'], {
+  failover: true,  // default: false
+  timeout: 1,      // default: 0.5 (seconds)
+  keepAlive: true  // default: false
+});
+
+// unique userID for user in DB + password hashing/checking
+const uuid           = require('uuid/v1');
+const argon2           = require('argon2');
+
+const app              = express();
+
+const knexConfig       = require("./knexfile");
+const knex             = require("knex")(knexConfig[ENV]);
+const morgan           = require('morgan');
+const knexLogger       = require('knex-logger');
+
+//local imports
+const helper           = require('./helper_functions/helpers');
 
 
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -38,6 +53,7 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -45,12 +61,6 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
-
-//configure cookie-session
-app.use(cookieSession({
-  name: 'session',
-  keys: [ $.KEY1, $.KEY2 ]
-}));
 
 if (cluster.isMaster) {
 
@@ -68,6 +78,18 @@ if (cluster.isMaster) {
   });
 
 } else {
+
+//configure session
+app.use(session({
+  genid: (req) => {
+    return uuid();
+  },
+  secret: [ $.KEY1, $.KEY2 ],
+  store: new MemcachedStore({
+    hosts: process.env.MEMCACHIER_SERVERS || 
+            process.env.MEMCACHE_SERVERS || ['127.0.0.1:11211']
+  })
+}));
 
   /* APP GET ROUTES */
 
@@ -113,8 +135,10 @@ if (cluster.isMaster) {
   });
 
   // clear user session
-  app.post('/logout', (req, res) = {
-
+  app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      store.destroy
+    });
   });
 
   // submit post, add subject tags, assign unique ID and reference user ID
