@@ -1,0 +1,15 @@
+.card-text {
+  display: none;
+  color: white;
+  font-size: 3em;
+}
+
+
+.card:hover .card-text {
+  display: inline-block;
+}
+
+.card-img-overlay {
+  position: absolute;
+
+}
