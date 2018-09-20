@@ -10,12 +10,20 @@ module.exports = {
   },
   //hash password
   passHasher: (password) => {
-    let salt = bcrypt.genSaltSync(10);
-    return bcrypt.hashSync(password, salt);
+    argon2.generateSalt().then(salt => {
+      argon2.hash(password, salt).then(hash => {
+        console.log('Created Argon2 hash:', hash);
+        return hash;
+      })
+    })
   },
   //compare input password to DB hash
-  hashCheck: (password, hash) => {
-    return bcrypt.compareSync(password, hash);
+  hashCheck: (hash, password) => {
+    argon2.verify(hash, password).then(() => {
+      console.log('Correct password.');
+    }).catch(() => {
+      console.log('Invalid password.');
+    });
   },
   //check for min length
   isMinLength: (input, length) => {
