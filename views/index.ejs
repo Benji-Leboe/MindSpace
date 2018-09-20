@@ -2,113 +2,117 @@
 <html lang="en">
 
   <head>
-    <% include ./partials/_head %>
+    <% include partials/_head %>
   </head>
 
   <body>
 
     <header>
-      <% include ./partials/_header %>
+      <% include partials/_header %>
     </header>
 
+    <div class="row">
     <aside>
-      <% include ./partials/_side-nav %>
+      <% include partials/_side-nav %>
     </aside>
 
-    <aside>
-      <%include ./partials/_activity-bar %>
-    </aside>
-
-    <main class="container">
+    <main class="container col-6">
 
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src="../images/technology.jpg" alt="technology">
-            <div class="overlay">
-              <span>Technology</span>
-            </div>
+          <a href="#technology"><img class="card-img-top" src="../images/technology.jpg" alt="technology"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Technology</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/science.jpeg" alt="science">
-            <div class="overlay">
-              <span>Science</span>
-            </div>
+          <a href="#science"><img class="card-img-top" src="../images/science.jpeg" alt="science"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Science</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/literature.jpeg" alt="literature">
-            <div class="overlay">
-              <span>Literature</span>
-            </div>
+          <a href="#literature"><img class="card-img-top" src="../images/literature.jpeg" alt="literature"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Literature</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-deck">
+        <div class="card">
+          <a href="#health"><img class="card-img-top" src="../images/health.jpeg" alt="health"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Health</p>
+          </div>
+        </div>
+        <div class="card">
+          <a href="#business"><img class="card-img-top" src="../images/business.jpeg" alt="business"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Business</p>
+          </div>
+        </div>
+        <div class="card">
+          <a href="#arts"><img class="card-img-top" src="../images/arts.jpeg" alt="arts"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Arts</p>
+          </div>
         </div>
       </div>
 
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src="../images/health.jpeg" alt="health">
-            <div class="overlay">
-              <span>Health</span>
-            </div>
+          <a href="#culture"><img class="card-img-top" src="../images/culture.jpeg" alt="culture"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Culture</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/business.jpeg" alt="business">
-            <div class="overlay">
-              <span>Business</span>
-            </div>
+          <a href="#education"><img class="card-img-top" src="../images/education.jpeg" alt="education"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Education</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/arts.jpeg" alt="arts">
-            <div class="overlay">
-              <span>Arts</span>
-            </div>
-        </div>
-      </div>
-
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="../images/culture.jpeg" alt="culture">
-            <div class="overlay">
-              <span>Culture</span>
-            </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="../images/education.jpeg" alt="education">
-            <div class="overlay">
-              <span>Education</span>
-            </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="../images/engineering.jpg" alt="engineering">
-            <div class="overlay">
-              <span>Engineering</span>
-            </div>
+          <a href="#engineering"><img class="card-img-top" src="../images/engineering.jpg" alt="engineering"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Engineering</p>
+          </div>
         </div>
       </div>
 
       <div class="card-deck">
         <div class="card">
-          <img class="card-img-top" src="../images/politics.jpeg" alt="politics">
-            <div class="overlay">
-              <span>Politics</span>
-            </div>
+          <a href="#politics"><img class="card-img-top" src="../images/politics.jpeg" alt="politics"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Politics</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/psychology.jpeg" alt="psychology">
-            <div class="overlay">
-              <span>Psychology</span>
-            </div>
+          <a href="#psychology"><img class="card-img-top" src="../images/psychology.jpeg" alt="psychology"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Psychology</p>
+          </div>
         </div>
         <div class="card">
-          <img class="card-img-top" src="../images/sports.jpeg" alt="sports">
-            <div class="overlay">
-              <span>Sports</span>
-            </div>
+          <a href="#sports"><img class="card-img-top" src="../images/sports.jpeg" alt="sports"></a>
+          <div class="card-img-overlay">
+            <p class="card-text">Sports</p>
+          </div>
         </div>
       </div>
 
     </main>
 
+    <aside>
+      <%include partials/_activity-bar %>
+    </aside>
+
+  </div>
+
     <footer>
-      <% include ./partials/_footer %>
+      <% include partials/_footer %>
     </footer>
 
   </body>
