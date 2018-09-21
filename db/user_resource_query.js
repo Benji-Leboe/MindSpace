@@ -1,9 +1,9 @@
 const pg = require("pg");
 const ENV = process.env.ENV || 'development';
-const knexConfig = require('./knexfile');
+const knexConfig = require('../knexfile');
 
 var knex = require('knex')(knexConfig[ENV]);
-
+console.log(knex);
 let searchData = "0011";
 
 const queryHandler = (err, rows) => {

@@ -10,7 +10,7 @@ var knex = require('knex')({
     database : 'midterm',
     }
 });
-
+console.log(knex);
 let searchData = "0011";
 
 const queryHandler = (err, rows) => {
