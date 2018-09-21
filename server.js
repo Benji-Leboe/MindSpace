@@ -17,7 +17,7 @@ const session          = require('express-session');
 const memjs            = require('memjs');
 const MemcachedStore   = require('connect-memjs')(session);
 const client           = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
-  failover: true,  // default: false
+  failover: false,  // default: false
   timeout: 1,      // default: 0.5 (seconds)
   keepAlive: true  // default: false
 });
