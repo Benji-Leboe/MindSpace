@@ -17,17 +17,13 @@ const session          = require('express-session');
 const memjs            = require('memjs');
 const MemcachedStore   = require('connect-memjs')(session);
 const client           = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
- feature/css
   failover: false,  // default: false
-
-  failover: false,  // default: false
-  master
   timeout: 1,      // default: 0.5 (seconds)
   keepAlive: true  // default: false
 });
 
 // unique userID for user in DB + password hashing/checking
-const uuid           = require('uuid/v1');
+const uuid             = require('uuid/v1');
 const argon2           = require('argon2');
 
 const app              = express();
@@ -48,7 +44,7 @@ const usersRoutes = require("./routes/users");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes,
+//         The :status token will be colored red for server error codes, yellow for client error codes, 
 //         cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
@@ -90,12 +86,8 @@ app.use(session({
   },
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
- feature/css
-    hosts: process.env.MEMCACHIER_SERVERS ||
-
     hosts: process.env.MEMCACHIER_SERVERS || 
- master
-       process.env.MEMCACHE_SERVERS || ['localhost:11211']
+            process.env.MEMCACHE_SERVERS || ['localhost:11211']
   })
 }));
 
@@ -124,7 +116,7 @@ app.use(session({
     res.render("subject_list");
   });
 
-  // view post in specific subject
+  // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
   app.get("/:subject_id/:post_id", (req, res) => {
     res.render('view_post');
@@ -152,11 +144,11 @@ app.use(session({
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-
+    
   });
 
   // edit post
-  // (user can only edit own post)
+  // (user can only edit own post) 
   app.put('/post/:post_id', (req, res) => {
 
   });
@@ -166,14 +158,14 @@ app.use(session({
 
   });
 
-  // like post, increment like count, add post to user likes
+  // like post, increment like count, add post to user likes 
   // (user cannot like own post)
   app.put('/like', (req, res) => {
 
   });
 
   // rate post, calculate average and display
-  // (user cannot rate own post)
+  // (user cannot rate own post) 
   app.put('/rate', (req, res) => {
 
   });

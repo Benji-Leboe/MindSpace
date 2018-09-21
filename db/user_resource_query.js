@@ -1,4 +1,3 @@
-const pg = require("pg");
 const ENV = process.env.ENV || 'development';
 const knexConfig = require('./knexfile');
 

@@ -1,15 +1,16 @@
 
 
 exports.up = function(knex, Promise) {
+	console.log("we are here.");
 	return Promise.all([
-
-		knex.raw('DROP TABLE users CASCADE'),
-		knex.raw('DROP TABLE resources CASCADE'),
-		knex.raw('DROP TABLE likes CASCADE'),
-		knex.raw('DROP TABLE ratings CASCADE'),
-		knex.raw('DROP TABLE comments CASCADE'),
-		knex.raw('DROP TABLE categories CASCADE'),
-		knex.raw('DROP TABLE subjects CASCADE'),
+		
+		knex.raw('DROP TABLE IF EXISTS users CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS resources CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS likes CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS ratings CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS comments CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS categories CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS subjects CASCADE'),
 
 		knex.schema.createTable('users', function(table){
 			table.increments();
@@ -73,13 +74,13 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
 	return Promise.all([
-		knex.schema.dropTable('users'),
-		knex.schema.dropTable('resources'),
-		knex.schema.dropTable('likes'),
-		knex.schema.dropTable('ratings'),
-		knex.schema.dropTable('comments'),
-		knex.schema.dropTable('categories'),
-		knex.schema.dropTable('subjects')
+		knex.raw('DROP TABLE IF EXISTS users CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS resources CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS likes CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS ratings CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS comments CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS categories CASCADE'),
+		knex.raw('DROP TABLE IF EXISTS subjects CASCADE')
     ])
 };
 
