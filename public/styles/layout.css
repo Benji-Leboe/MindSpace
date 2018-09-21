@@ -1,3 +1,7 @@
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
 .card-deck {
   margin-bottom: 2em;
 }
@@ -41,13 +45,77 @@
 .card .card-img-overlay {
   transition: .5s ease;
   opacity: 0;
+<<<<<<< HEAD
+=======
+  position: absolute;
+}
+
+.card .card-img-overlay p {
+>>>>>>> 69427d7e1b3b73bfe154e13a69c4749c1625716f
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.4rem;
 }
 
 .card .card-img-overlay:hover {
   opacity: 1;
   color: white;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
+.col-3 #side-navbar {
+  background-color: #233855;
+  height: 100%;
+}
+
+.col-3 #side-navbar #side-nav-subjects p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.col-3 #side-navbar #side-nav-subjects p a {
+  color: #8e94be;
+  text-decoration: none;
+}
+
+.col-3 #side-navbar #side-nav-subjects p a:hover {
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
+#nav-bar {
+  background: url("../images/nav-bar.jpg") no-repeat;
+  height: 200px;
+}
+
+#nav-bar #nav-bar-contents #login-register {
+  margin-top: 150px;
+}
+
+#nav-bar #nav-bar-contents #mindspace-title {
+  color: white;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+#nav-bar #nav-bar-contents #searchbar {
+  margin-top: 150px;
+}
+
+#activity-bar {
+  background-color: #353535;
+  margin-top: 0px;
 }
 
 body {

@@ -5,20 +5,26 @@
     <%- include partials/_head %>
   </head>
 
-  <body class="container-fluid">
+  <body class="container-fluid pl-0 pr-0">
 
-    <header class="container-fluid">
-      <%- include partials/_header %>
+    <header class="container-fluid pl-0 pr-0">
+      <% include partials/_header %>
     </header>
 
-    <div class="container-fluid mt-5">
+    <div class="container-fluid">
 
       <main class="row">
         <div class="col-3">
           <%- include partials/_side-nav %>
         </div>
 
+        <div class="col-3 pl-0">
+          <% include partials/_side-nav %>
+        </div>
+
         <div id="subjectGrid" class="col-6">
+
+        <div class="col-6 mt-5">
           <div class="card-deck">
 
             <div id="technology" class="card">

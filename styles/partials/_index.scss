@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import 'mixins';
+=======
+@import "palette";
+>>>>>>> 69427d7e1b3b73bfe154e13a69c4749c1625716f
 
 .card-deck {
   margin-bottom: 2em;
@@ -41,6 +45,7 @@
       // pointer-events: none;
       transition: .5s ease;
       opacity: 0;
+<<<<<<< HEAD
       // position: absolute;
       text-align: center;
       font-size: 1.5em;
@@ -52,4 +57,16 @@
       }
     }
     
+=======
+      position: absolute;
+      p {
+        text-align: center;
+        font-size: 1.4rem;
+      }
+    }
+    .card-img-overlay:hover {
+      opacity: 1;
+      color: $color5;
+    }
+>>>>>>> 69427d7e1b3b73bfe154e13a69c4749c1625716f
 }
