@@ -11,7 +11,7 @@ exports.seed = seedTables;
 
 async function seedTables(knex, Promise) {
 
-  const deleteTables = ['subjects', 'categories', 'comments', 'likes', 'ratings', 'resources', 'users'];
+  const deleteTables = ['categories', 'subjects', 'comments', 'likes', 'ratings', 'resources', 'users'];
   const createTables = ['users', 'resources', 'subjects', 'categories', 'comments', 'ratings', 'likes'];
   const content = [userData, resourceData, subjectData, categoryData, commentData, ratingData, likeData];
 
