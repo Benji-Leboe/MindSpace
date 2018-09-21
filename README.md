@@ -15,5 +15,5 @@ First commit for MindSpace project with Ardelia Tay and Yang Yu for week 5 proje
 
 ## Dependencies
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+- Node 10.10.x or above
+- NPM 6.4.1 or above
