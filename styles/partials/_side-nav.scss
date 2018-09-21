@@ -1,19 +1,17 @@
+@import 'palette';
+
 .col-3 {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
     #side-navbar {
-        background-color: rgb(53, 53, 53);
-        margin-top: 0px;
+        background-color: $color2;
         #side-nav-subjects {   
             p {
-                margin: 1rem;
                 font-size: 1rem;
+                text-align: center;
                 a {
-                    color: rgb(116, 112, 112);
+                    color: $color4;
                     text-decoration: none;
                     &:hover {
-                        color:white;
+                        color: $color5;
                         transition: all 0.3s ease;
                     }
                 }

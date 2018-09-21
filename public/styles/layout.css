@@ -1,3 +1,7 @@
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
 .card-deck {
   margin-bottom: 2em;
 }
@@ -34,24 +38,21 @@
   color: white;
 }
 
-.col-3 {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
 .col-3 #side-navbar {
-  background-color: #353535;
-  margin-top: 0px;
+  background-color: #233855;
 }
 
 .col-3 #side-navbar #side-nav-subjects p {
-  margin: 1rem;
   font-size: 1rem;
+  text-align: center;
 }
 
 .col-3 #side-navbar #side-nav-subjects p a {
-  color: #747070;
+  color: #8e94be;
   text-decoration: none;
 }
 
@@ -63,6 +64,11 @@
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* HSL */
 /* RGB */
+/* Font */
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+/* Font */
 .container-fluid {
   width: 100%;
 }
@@ -72,21 +78,22 @@
   height: 200px;
 }
 
-#nav-bar #nav-bar-contents {
-  padding: 50px;
+#nav-bar #nav-bar-contents #login-register {
+  margin-top: 150px;
 }
 
-#nav-bar #nav-bar-contents .header-name {
+#nav-bar #nav-bar-contents #mindspace-title {
   color: white;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 0.5em;
 }
 
-.col-3 {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
+#nav-bar #nav-bar-contents #searchbar {
+  margin-top: 150px;
 }
 
-.col-3 #activity-bar {
+#activity-bar {
   background-color: #353535;
   margin-top: 0px;
 }

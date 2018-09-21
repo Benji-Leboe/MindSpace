@@ -1,3 +1,5 @@
+@import "palette";
+
 .card-deck {
   margin-bottom: 2em;
 }
@@ -26,6 +28,6 @@
     }
     .card-img-overlay:hover {
       opacity: 1;
-      color: white;
+      color: $color5;
     }
 }

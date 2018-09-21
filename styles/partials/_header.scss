@@ -1,3 +1,5 @@
+@import "palette";
+
 .container-fluid {
     width: 100%;
 }
@@ -6,9 +8,17 @@
     background: url("../images/nav-bar.jpg") no-repeat;
     height: 200px;
     #nav-bar-contents {
-        padding: 50px;
-        .header-name {
-            color: white;
+        #login-register {
+            margin-top: 150px;
+        }
+        #mindspace-title {
+            color: $color5;
+            font-size: 5rem;
+            text-align: center;
+            margin-top: 0.5em;
+        }
+        #searchbar {
+            margin-top: 150px;
         }
     }
 }
