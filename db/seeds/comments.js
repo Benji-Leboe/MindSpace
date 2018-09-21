@@ -3,12 +3,11 @@ const db = {
   comments: require("../sampleData/comments")
 }
 
-let key = 5;
+let key = 1;
 
 //console.log(db.users[key]);
 
 let insertData = {
-  date: db.comments[key].date,
   content: db.comments[key].content,
   resource_id: db.comments[key].resource_id,
   user_id: db.comments[key].user_id

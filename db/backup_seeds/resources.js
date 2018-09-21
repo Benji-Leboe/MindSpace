@@ -11,7 +11,6 @@ let insertData = {
 	external_url: resDB.resources[key].external_url,
   title: resDB.resources[key].title,
   description: resDB.resources[key].description,
-  create_at: resDB.resources[key].created_at,
   user_id: resDB.resources[key].user_id
 };
 
