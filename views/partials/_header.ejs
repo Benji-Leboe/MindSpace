@@ -1,80 +1,101 @@
-<nav class="container-fluid">
+<nav class="container-fluid pt-1 pb-1 pl-1 pr-1 mb-auto">
 
-  <img class="logo" src="">
-  <span class="header-name">Mindspace</span>
-  <div id="navSearch" class="input-group">
-    <input type="text" class="form-control" placeholder="Search for topics...">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary">
-        Search
-      </button>
-    </div>
-  </div>
-
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="loginDropdown" data-toggle="dropdown">
-      Login
-    </button>
-    <div class="dropdown-menu">
-      <form class="px-3 py-3">
-        <div class="form-group">
-          <label for="loginFormEmail">
-            Email Address
-          </label>
-          <input type="email" class="form-control" id="loginFormEmail" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="loginFormPassword">
-            Password
-          </label>
-          <input type="password" class="form-control" id="loginFormPassword" placeholder="password">
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Sign In
-        </button>
-      </form>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">No account? Sign up!</a>
-    </div>
-  </div>
-
-  <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="registerDropdown" data-toggle="dropdown">
-        Register
-      </button>
-      <div class="dropdown-menu">
-        <form class="px-3 py-3">
-          <div class="form-group">
-            <label for="registerFormEmail">
-              Email Address
-            </label>
-            <input type="email" class="form-control" id="registerFormEmail" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="registerFormUsername">
-              Username
-            </label>
-            <input type="username" class="form-control" id="registerFormUsername" placeholder="Username">
-          </div>
-          <div class="form-group">
-            <label for="registerFormPassword">
-              Password
-            </label>
-            <input type="password" class="form-control" id="registerFormPassword" placeholder="password">
-          </div>
-          <div class="form-group">
-            <label for="registerConfirmPassword">
-              Confirm Password
-            </label>
-            <input type="password" class="form-control" id="registerConfirmPassword" placeholder="password">
-          </div>
-          <button type="submit" class="btn btn-primary">
-            Sign Up
+  <div class="container-fluid row justify-content-between">
+    <span class="row">
+      <!--LOGIN-->
+      <span class="row pl-2 pr-2 mr-1 ml-2">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="loginDropdown" data-toggle="dropdown">
+            Login
           </button>
-        </form>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Have an account? Sign in!</a>
-      </div>
-    </div>
+          <div class="dropdown-menu">
+            <form class="px-3 py-3">
+              <div class="form-group">
+                <label for="loginFormEmail">
+                  Email Address
+                </label>
+                <input type="email" class="form-control" id="loginFormEmail" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="loginFormPassword">
+                  Password
+                </label>
+                <input type="password" class="form-control" id="loginFormPassword" placeholder="password">
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Sign In
+              </button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">No account? Sign up!</a>
+          </div>
+        </div>
+        
+        <!--REGISTER-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="registerDropdown" data-toggle="dropdown">
+            Register
+          </button>
+          <div class="dropdown-menu">
+            <form class="px-3 py-3">
+              <div class="form-group">
+                <label for="registerFormEmail">
+                  Email Address
+                </label>
+                <input type="email" class="form-control" id="registerFormEmail" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="registerFormUsername">
+                  Username
+                </label>
+                <input type="username" class="form-control" id="registerFormUsername" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="registerFormPassword">
+                  Password
+                </label>
+                <input type="password" class="form-control" id="registerFormPassword" placeholder="password">
+              </div>
+              <div class="form-group">
+                <label for="registerConfirmPassword">
+                  Confirm Password
+                </label>
+                <input type="password" class="form-control" id="registerConfirmPassword" placeholder="password">
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Sign Up
+              </button>
+            </form>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Have an account? Sign in!</a>
+          </div>
+        </div>
+      </span>
+    </span>
+
+    <span>
+      <img class="logo" src="">
+      <span class="header-name">Mindspace</span>
+    </span>
+    
+
+    <span class="row">
+      <!--SEARCH-->
+      <span class="col">
+        <div id="navSearch" class="input-group">
+          <input type="text" class="form-control" placeholder="Search for topics...">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary">
+              Search
+            </button>
+          </div>
+        </div>
+      </span>
+      
+    </span>
+
+  </div>
+    
+    
 
 </nav>
