@@ -17,7 +17,15 @@ const session          = require('express-session');
 const memjs            = require('memjs');
 const MemcachedStore   = require('connect-memjs')(session);
 const client           = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
+<<<<<<< HEAD
   failover: false,  // default: false
+=======
+ feature/css
+  failover: false,  // default: false
+
+  failover: false,  // default: false
+  master
+>>>>>>> 1e72a815cd53e468d3f5f61bd9f12be44d38c184
   timeout: 1,      // default: 0.5 (seconds)
   keepAlive: true  // default: false
 });
@@ -86,8 +94,12 @@ app.use(session({
   },
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
+ feature/css
     hosts: process.env.MEMCACHIER_SERVERS ||
-            process.env.MEMCACHE_SERVERS || ['localhost:11211']
+
+    hosts: process.env.MEMCACHIER_SERVERS || 
+ master
+       process.env.MEMCACHE_SERVERS || ['localhost:11211']
   })
 }));
 
