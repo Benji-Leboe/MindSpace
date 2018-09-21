@@ -86,9 +86,8 @@ app.use(session({
   },
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
-<<<<<<< HEAD
     hosts: process.env.MEMCACHIER_SERVERS ||
-    hosts: process.env.MEMCACHIER_SERVERS ||
+            process.env.MEMCACHE_SERVERS || ['localhost:11211']
   })
 }));
 
