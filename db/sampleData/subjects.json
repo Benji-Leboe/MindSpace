@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "name": "Precalculus"
+  },
+
+  {
+    "id": 2,
+    "name": "Calculus I"
+  },
+
+  {
+    "id": 3,
+    "name": "Calculus II"
+  },
+
+  {
+    "id": 4,
+    "name": "Javascript"
+  },
+
+  {
+    "id": 5,
+    "name": "Python"
+  },
+
+    {
+    "id": 6,
+    "name": "BootStrap"
+  },
+
+    {
+    "id": 7,
+    "name": "Chemistry 12"
+  },
+
+    {
+    "id": 8,
+    "name": "Physics 12"
+  }
+]

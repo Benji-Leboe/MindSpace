@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "0011",
+    "first_name": "Isaac1",
+    "last_name": "Newton1",
+    "email": "newton1@gmail.com",
+    "username": "newton111",
+    "password": "123456",
+    "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/5.png",
+    "bio": "I'm a bio for Newton111."
+  },
+  {
+    "uid": "0022",
+    "first_name": "Isaac2",
+    "last_name": "Newton2",
+    "email": "newton2@gmail.com",
+    "username": "newton222",
+    "password": "123456",
+    "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/5.png",
+    "bio": "I'm a bio for Newton222."
+  },
+  {
+    "uid": "0033",
+    "first_name": "Isaac3",
+    "last_name": "Newton3",
+    "email": "newton3@gmail.com",
+    "username": "newton333",
+    "password": "123456",
+    "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/5.png",
+    "bio": "I'm a bio for Newton333."
+  }
+]
