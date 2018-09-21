@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .card-deck {
   margin-bottom: 2em;
 }
@@ -13,17 +15,41 @@
     }
     &:hover {
       opacity: 0.6;
+      
+    }
+    &:hover {
+      opacity: 0.6;
+      .card-text {
+        @include select(none);
+        pointer-events: none;
+        // z-index: 99;
+      }
     }
 
+    .card-img-btn {
+      position: relative;
+      opacity: 1;
+      display: block;
+      width: 100%;
+      transition: .2s ease;
+      backface-visibility: hidden;
+      
+    }
+    
+
     .card-img-overlay {
+      // pointer-events: none;
       transition: .5s ease;
       opacity: 0;
-      position: absolute;
+      // position: absolute;
       text-align: center;
       font-size: 1.5em;
+
+      &:hover {
+        opacity: 1;
+        color: white;
+  
+      }
     }
-    .card-img-overlay:hover {
-      opacity: 1;
-      color: white;
-    }
+    
 }

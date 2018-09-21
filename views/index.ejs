@@ -2,40 +2,43 @@
 <html lang="en">
 
   <head>
-    <% include partials/_head %>
+    <%- include partials/_head %>
   </head>
 
   <body class="container-fluid">
 
     <header class="container-fluid">
-      <% include partials/_header %>
+      <%- include partials/_header %>
     </header>
 
     <div class="container-fluid mt-5">
 
       <main class="row">
         <div class="col-3">
-          <% include partials/_side-nav %>
+          <%- include partials/_side-nav %>
         </div>
 
-        <div class="col-6">
+        <div id="subjectGrid" class="col-6">
           <div class="card-deck">
-            <div class="card">
-              <a href="#technology"><img class="card-img-top" src="../images/technology.jpg" alt="technology"></a>
+
+            <div id="technology" class="card">
+              <input class="card-img-btn" type="image" src="../images/technology.jpg" alt="technology">
               <div class="card-img-overlay">
                 <p class="card-text">Technology</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#science"><img class="card-img-top" src="../images/science.jpeg" alt="science"></a>
+
+            <div id="science" class="card">
+              <input class="card-img-btn" type="image" src="../images/science.jpeg" alt="science">
               <div class="card-img-overlay">
                 <p class="card-text">Science</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#literature"><img class="card-img-top" src="../images/literature.jpeg" alt="literature"></a>
+
+            <div id="literature" class="card">
+              <input class="card-img-btn" type="image" src="../images/literature.jpeg" alt="literature">
               <div class="card-img-overlay">
-                <p class="card-text">Literature</p>
+                <p class="card-text">Science</p>
               </div>
             </div>
 
@@ -108,13 +111,13 @@
       </main>
 
       <aside>
-        <%include partials/_activity-bar %>
+        <%- include partials/_activity-bar %>
       </aside>
 
     </div>
 
     <footer class="fixed-bottom">
-      <% include partials/_footer %>
+      <%- include partials/_footer %>
     </footer>
 
   </body>

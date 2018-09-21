@@ -1,0 +1,5 @@
+@mixin select($property) {
+  -webkit-user-select: $property;
+    -moz-user-select: $property;
+    -ms-user-select: $property;
+}
