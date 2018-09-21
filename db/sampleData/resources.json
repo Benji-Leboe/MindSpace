@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "external_url": "https://www.amazon.com/",
+    "title": "amazon",
+    "description": "online shopping website",
+    "created_at": 1537390582873,
+    "user_id": 1
+  },
+
+  {
+    "id": 2,
+    "external_url": "https://www.google.com/",
+    "title": "google",
+    "description": "online search engine",
+    "created_at": 1537390611943,
+    "user_id": 2
+  },
+
+  {
+    "id": 3,
+    "external_url": "https://www.lighthouselabs.ca/",
+    "title": "lighthouselabs",
+    "description": "Web development bootcamp",
+    "created_at": 1537390636206,
+    "user_id": 3
+  },
+
+  {
+    "id": 4,
+    "external_url": "https://getbootstrap.com/",
+    "title": "Bootstrap",
+    "description": "the world's most popular front-end component library.",
+    "created_at": 1537390649261,
+    "user_id": 1
+  },
+
+  {
+    "id": 5,
+    "external_url": "https://www.lighthouselabs.ca/",
+    "title": "lighthouselabs",
+    "description": "Web development bootcamp",
+    "created_at": 1537390662531,
+    "user_id": 2
+  },
+
+  {
+    "id": 6,
+    "external_url": "https://node-postgres.com/",
+    "title": "node-postages",
+    "description": "node.js modules for interfacing with your PostgreSQL database",
+    "created_at": 1537390675170,
+    "user_id": 2
+  },
+
+  {
+    "id": 7,
+    "external_url": "https://www.evernote.com/",
+    "title": "evernote",
+    "description": "Web note website",
+    "created_at": 1537390688801,
+    "user_id": 3
+  }
+]
