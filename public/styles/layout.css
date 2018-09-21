@@ -22,13 +22,73 @@
   transition: .5s ease;
   opacity: 0;
   position: absolute;
+}
+
+.card .card-img-overlay p {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.4rem;
 }
 
 .card .card-img-overlay:hover {
   opacity: 1;
   color: white;
+}
+
+.col-3 {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.col-3 #side-navbar {
+  background-color: #353535;
+  margin-top: 0px;
+}
+
+.col-3 #side-navbar #side-nav-subjects p {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.col-3 #side-navbar #side-nav-subjects p a {
+  color: #747070;
+  text-decoration: none;
+}
+
+.col-3 #side-navbar #side-nav-subjects p a:hover {
+  color: white;
+  transition: all 0.3s ease;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* HSL */
+/* RGB */
+.container-fluid {
+  width: 100%;
+}
+
+#nav-bar {
+  background: url("../images/nav-bar.jpg") no-repeat;
+  height: 200px;
+}
+
+#nav-bar #nav-bar-contents {
+  padding: 50px;
+}
+
+#nav-bar #nav-bar-contents .header-name {
+  color: white;
+}
+
+.col-3 {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.col-3 #activity-bar {
+  background-color: #353535;
+  margin-top: 0px;
 }
 
 body {

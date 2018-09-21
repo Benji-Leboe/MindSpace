@@ -1,0 +1,14 @@
+.container-fluid {
+    width: 100%;
+}
+
+#nav-bar {
+    background: url("../images/nav-bar.jpg") no-repeat;
+    height: 200px;
+    #nav-bar-contents {
+        padding: 50px;
+        .header-name {
+            color: white;
+        }
+    }
+}

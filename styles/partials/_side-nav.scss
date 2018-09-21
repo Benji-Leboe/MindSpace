@@ -1,1 +1,23 @@
-
+.col-3 {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    #side-navbar {
+        background-color: rgb(53, 53, 53);
+        margin-top: 0px;
+        #side-nav-subjects {   
+            p {
+                margin: 1rem;
+                font-size: 1rem;
+                a {
+                    color: rgb(116, 112, 112);
+                    text-decoration: none;
+                    &:hover {
+                        color:white;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+}
