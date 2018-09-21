@@ -44,10 +44,11 @@
 /* Font */
 .col-3 #side-navbar {
   background-color: #233855;
+  height: 100%;
 }
 
 .col-3 #side-navbar #side-nav-subjects p {
-  font-size: 1rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -69,10 +70,6 @@
 /* HSL */
 /* RGB */
 /* Font */
-.container-fluid {
-  width: 100%;
-}
-
 #nav-bar {
   background: url("../images/nav-bar.jpg") no-repeat;
   height: 200px;

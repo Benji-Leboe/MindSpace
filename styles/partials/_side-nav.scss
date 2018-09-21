@@ -3,9 +3,10 @@
 .col-3 {
     #side-navbar {
         background-color: $color2;
+        height: 100%;
         #side-nav-subjects {   
             p {
-                font-size: 1rem;
+                font-size: 2rem;
                 text-align: center;
                 a {
                     color: $color4;
