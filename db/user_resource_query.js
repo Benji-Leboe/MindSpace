@@ -1,15 +1,8 @@
 const pg = require("pg");
+const ENV = process.env.ENV || 'development';
+const knexConfig = require('./knexfile');
 
-var knex = require('knex')({
-	client: 'pg',
-	version: '7.4.3',
-  	connection: {
-    host : '127.0.0.1',
-    user : 'labber',
-    password : 'labber',
-    database : 'midterm',
-    }
-});
+var knex = require('knex')(knexConfig[ENV]);
 
 let searchData = "0011";
 
