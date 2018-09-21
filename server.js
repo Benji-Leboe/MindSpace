@@ -86,8 +86,9 @@ app.use(session({
   },
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
+<<<<<<< HEAD
     hosts: process.env.MEMCACHIER_SERVERS ||
-            process.env.MEMCACHE_SERVERS || ['localhost:11211']
+    hosts: process.env.MEMCACHIER_SERVERS ||
   })
 }));
 
@@ -136,11 +137,9 @@ app.use(session({
 
   // clear user session
   app.post('/logout', (req, res) => {
-
     req.session.destroy((err) => {
       store.destroy
     });
-
   });
 
   // submit post, add subject tags, assign unique ID and reference user ID
