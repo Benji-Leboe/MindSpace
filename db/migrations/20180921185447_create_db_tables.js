@@ -34,7 +34,7 @@ exports.up = function(knex, Promise) {
     }).createTable('subjects', function(table){
       console.log("Subjects table created");
 			table.increments('id');
-      table.string('name').notNullable().unique();
+      table.string('subject_name').notNullable().unique();
       
 		}).createTable('likes', function(table){
       console.log("Likes table created");
