@@ -104,32 +104,39 @@ app.use(session({
     res.render("index");
   });
 
+  app.get("/test", (req, res) => {
+    res.render("test_templates");
+  });
+
   // view profile- bio etc.
-  app.get("/:user_id/profile", (req, res) => {
+  app.get("/profile/:user_id", (req, res) => {
     res.render("user_profile");
   });
 
   // view main user page w/ posts and likes
-  app.get("/:user_id", (req, res) => {
+  app.get("/posts/:user_id", (req, res) => {
     res.render("user_posts");
   });
 
   // view posts for specific subject
-  app.get("/:subject_id", (req, res) => {
+  app.get("/subjects/:subject_id", (req, res) => {
     let subject = req.params.subject_id;
     //query subject from DB
 
     res.render("subject_list");
   });
 
+<<<<<<< HEAD
   app.get("/test", (req, res) => {
     console.log("Test route success");
     res.render("test_templates");
   })
 
+=======
+>>>>>>> 686a9a98bfff58f8d7493e755674ed1c030629e9
   // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
-  app.get("/:subject_id/:post_id", (req, res) => {
+  app.get("subjects/:subject_id/:post_id", (req, res) => {
     res.render('view_post');
   });
 
