@@ -122,14 +122,13 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
-  /* IF YOU NEED TO TEST MORE THAN ONE THING DUPLICATE THIS CODE AND CALL IT test2 */
-
-  app.get("/test", cacheView, (req, res) => {
-    //TO DUPLICATE CHANGE THE NAME BELOW TO MATCH YOUR TEST FILE
-    res.render("test_templates");
+  app.get("/test2", cacheView, (req, res) => {
+    res.render("test_templates2");
   });
 
-  //******************************* */
+  app.get("/test", cacheView, (req, res) => {
+    res.render("test_templates");
+  });
 
   // view profile- bio etc.
   app.get("/profile/:user_id", cacheView, (req, res) => {

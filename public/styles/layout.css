@@ -130,3 +130,7 @@ footer {
   background: url("../images/nav-bar.jpg");
   color: white;
 }
+
+.modal-backdrop {
+  background-image: url("../images/spacebackdrop.jpg");
+}
