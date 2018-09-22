@@ -16,7 +16,7 @@ const session          = require('express-session');
 // memory cache
 const memjs            = require('memjs');
 const MemcachedStore   = require('connect-memjs')(session);
-const client           = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
+const mc               = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
   failover: false,  // default: false
   timeout: 1,      // default: 0.5 (seconds)
   keepAlive: true  // default: false
@@ -94,32 +94,55 @@ app.use(session({
   unset: 'destroy'
 }));
 
+const cacheView = (req, res, next) => {
+  let view_key = '_view_cache_' + req.originalUrl || req.url;
+  mc.get(view_key, (err, val) => {
+    if (err === null && val !== null) {
+      res.send(val.toString('utf8'));
+      return;
+    }
+    res.sendRes = res.send;
+    res.send = (body) => {
+      mc.set(view_key, body, { expires: 0 }, (err, val) => {
+        if (err) throw err;
+      });
+      res.sendRes(body);
+    }
+    next();
+  });
+}
+
   /* APP GET ROUTES */
 
   // Mount all resource routes
   app.use("/api/users", usersRoutes(knex));
 
   // Home page - list of subjects in grid format
-  app.get("/", (req, res) => {
+  app.get("/", cacheView, (req, res) => {
     res.render("index");
   });
 
-  app.get("/test", (req, res) => {
+  /* IF YOU NEED TO TEST MORE THAN ONE THING DUPLICATE THIS CODE AND CALL IT test2 */
+
+  app.get("/test", cacheView, (req, res) => {
+    //TO DUPLICATE CHANGE THE NAME BELOW TO MATCH YOUR TEST FILE
     res.render("test_templates");
   });
 
+  //******************************* */
+
   // view profile- bio etc.
-  app.get("/profile/:user_id", (req, res) => {
+  app.get("/profile/:user_id", cacheView, (req, res) => {
     res.render("user_profile");
   });
 
   // view main user page w/ posts and likes
-  app.get("/posts/:user_id", (req, res) => {
+  app.get("/posts/:user_id", cacheView, (req, res) => {
     res.render("user_posts");
   });
 
   // view posts for specific subject
-  app.get("/subjects/:subject_id", (req, res) => {
+  app.get("/subjects/:subject_id", cacheView, (req, res) => {
     let subject = req.params.subject_id;
     //query subject from DB
 
@@ -128,7 +151,7 @@ app.use(session({
 
   // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
-  app.get("subjects/:subject_id/:post_id", (req, res) => {
+  app.get("subjects/:subject_id/:post_id", cacheView, (req, res) => {
     res.render('view_post');
   });
 
