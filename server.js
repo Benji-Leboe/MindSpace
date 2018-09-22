@@ -115,7 +115,7 @@ app.use(session({
   });
 
   // view posts for specific subject
-  app.get("/:subject_id", (req, res) => {
+  app.get("/subjects", (req, res) => {
     let subject = req.params.subject_id;
     //query subject from DB
 

@@ -14,18 +14,15 @@
     <div class="container-fluid">
 
       <main class="row">
-        <div class="col-3">
-          <%- include partials/_side-nav %>
-        </div>
 
-        <div class="col-3 pl-0">
+        <div class="side-nav col-2 pl-0 mb-0">
           <% include partials/_side-nav %>
         </div>
 
-        <div id="subjectGrid" class="col-6">
+        <div id="subjectGrid" class="col-8">
 
-        <div class="col-6 mt-5">
-          <div class="card-deck">
+        <div class="mt-5">
+          <div class="card-deck row">
 
             <div id="technology" class="card">
               <input class="card-img-btn" type="image" src="../images/technology.jpg" alt="technology">
@@ -44,13 +41,13 @@
             <div id="literature" class="card">
               <input class="card-img-btn" type="image" src="../images/literature.jpeg" alt="literature">
               <div class="card-img-overlay">
-                <p class="card-text">Science</p>
+                <p class="card-text">Literature</p>
               </div>
             </div>
 
           </div>
 
-          <div class="card-deck">
+          <div class="card-deck row">
             <div class="card">
               <a href="#health"><img class="card-img-top" src="../images/health.jpeg" alt="health"></a>
               <div class="card-img-overlay">
@@ -71,7 +68,7 @@
             </div>
           </div>
 
-          <div class="card-deck">
+          <div class="card-deck row">
             <div class="card">
               <a href="#culture"><img class="card-img-top" src="../images/culture.jpeg" alt="culture"></a>
               <div class="card-img-overlay">
@@ -92,7 +89,7 @@
             </div>
           </div>
 
-          <div class="card-deck">
+          <div class="card-deck row">
             <div class="card">
               <a href="#politics"><img class="card-img-top" src="../images/politics.jpeg" alt="politics"></a>
               <div class="card-img-overlay">
@@ -122,7 +119,7 @@
 
     </div>
 
-    <footer class="fixed-bottom">
+    <footer class="align-items-end mt-0">
       <%- include partials/_footer %>
     </footer>
 
