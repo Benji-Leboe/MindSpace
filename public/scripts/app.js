@@ -23,7 +23,7 @@ function getSubject(){
     event.preventDefault();
     let currentTarget = $(event.target);
     console.log($(currentTarget).parent('.card').attr('id'));
-  })
+  });
 }
 
 function postRegister() {
@@ -37,9 +37,8 @@ function postRegister() {
       'passwordCheck': $('input[id=registerConfirmPassword]').val()
     };
 
-    console.log(formData);
     $.ajax({
-      url: '/register',
+      url: '/api/users/register',
       method: 'POST',
       data: formData,
       success: function() {
@@ -66,7 +65,7 @@ function postLogin() {
 
     console.log(formData);
     $.ajax({
-      url: '/login',
+      url: '/api/users/login',
       method: 'POST',
       data: formData,
       success: function() {

@@ -13,11 +13,9 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('users', function(table) {
       console.log("Users table created");
       table.uuid('id').notNullable().primary();
-      table.string('first_name');
-      table.string('last_name');
       table.string('email').notNullable().unique();
       table.string('username').notNullable().unique();
-      table.string('password');
+      table.string('password').notNullable();
       table.string('avatar');
       table.string('bio');
     }).createTable('resources', function(table) {

@@ -1,4 +1,4 @@
-
+const argon2  = require('argon2');
 
 
 // helper functions for server
@@ -10,20 +10,11 @@ module.exports = {
   },
   //hash password
   passHasher: (password) => {
-    argon2.generateSalt().then(salt => {
-      argon2.hash(password, salt).then(hash => {
-        console.log('Created Argon2 hash:', hash);
-        return hash;
-      })
-    })
+    return argon2.hash(password);
   },
   //compare input password to DB hash
   hashCheck: (hash, password) => {
-    argon2.verify(hash, password).then(() => {
-      console.log('Correct password.');
-    }).catch(() => {
-      console.log('Invalid password.');
-    });
+    argon2.verify(hash, password);
   },
   //check for min length
   isMinLength: (input, length) => {

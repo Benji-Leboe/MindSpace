@@ -1,8 +1,6 @@
 [
   {
     "id": "aca5acf0-bdd6-11e8-b0db-d1c4272aee59",
-    "first_name": "Isaac1",
-    "last_name": "Newton1",
     "email": "newton1@gmail.com",
     "username": "newton111",
     "password": "123456",
@@ -11,8 +9,6 @@
   },
   {
     "id": "b83210e0-bdd6-11e8-a5ee-1bdebcd39a56",
-    "first_name": "Isaac2",
-    "last_name": "Newton2",
     "email": "newton2@gmail.com",
     "username": "newton222",
     "password": "123456",
@@ -21,8 +17,6 @@
   },
   {
     "id": "be663360-bdd6-11e8-bcba-51b9f4366655",
-    "first_name": "Isaac3",
-    "last_name": "Newton3",
     "email": "newton3@gmail.com",
     "username": "newton333",
     "password": "123456",

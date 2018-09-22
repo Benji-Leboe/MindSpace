@@ -87,7 +87,7 @@ app.use(session({
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
     hosts: process.env.MEMCACHIER_SERVERS || 
-            process.env.MEMCACHE_SERVERS || ['localhost:11211']
+           process.env.MEMCACHE_SERVERS || ['localhost:11211']
   }),
   resave: false,
   saveUninitialized: false,
@@ -95,21 +95,22 @@ app.use(session({
 }));
 
 const cacheView = (req, res, next) => {
-  let view_key = '_view_cache_' + req.originalUrl || req.url;
-  mc.get(view_key, (err, val) => {
-    if (err === null && val !== null) {
-      res.send(val.toString('utf8'));
-      return;
-    }
-    res.sendRes = res.send;
-    res.send = (body) => {
-      mc.set(view_key, body, { expires: 0 }, (err, val) => {
-        if (err) throw err;
-      });
-      res.sendRes(body);
-    }
-    next();
-  });
+  // let view_key = '_view_cache_' + req.originalUrl || req.url;
+  // mc.get(view_key, (err, val) => {
+  //   if (err === null && val !== null) {
+  //     res.send(val.toString('utf8'));
+  //     return;
+  //   }
+  //   res.sendRes = res.send;
+  //   res.send = (body) => {
+  //     mc.set(view_key, body, { expires: 0 }, (err, val) => {
+  //       if (err) throw err;
+  //     });
+  //     res.sendRes(body);
+  //   }
+  //   next();
+  // });
+  next();
 }
 
   /* APP GET ROUTES */
@@ -151,7 +152,7 @@ const cacheView = (req, res, next) => {
 
   // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
-  app.get("subjects/:subject_id/:post_id", cacheView, (req, res) => {
+  app.get("/subjects/:subject_id/:post_id", cacheView, (req, res) => {
     res.render('view_post');
   });
 
@@ -193,12 +194,12 @@ const cacheView = (req, res, next) => {
 
   // edit post
   // (user can only edit own post) 
-  app.put('/post/:post_id', (req, res) => {
+  app.put('/post/edit/:post_id', (req, res) => {
 
   });
 
   // owner remove post from DB
-  app.delete('/post/:post_id', (req, res) => {
+  app.delete('/post/delete/:post_id', (req, res) => {
 
   });
 
