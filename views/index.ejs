@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <% include partials/_head %>
+    <%- include partials/_head %>
   </head>
 
   <body class="container-fluid pl-0 pr-0">
@@ -14,26 +14,32 @@
     <div class="container-fluid">
 
       <main class="row">
-        <div class="col-3 pl-0">
+
+        <div class="side-nav col-2 pl-0 mb-0">
           <% include partials/_side-nav %>
         </div>
 
-        <div class="col-6 mt-5">
-          <div class="card-deck">
-            <div class="card">
-              <a href="#technology"><img class="card-img-top" src="../images/technology.jpg" alt="technology"></a>
+        <div id="subjectGrid" class="col-8">
+
+        <div class="mt-5">
+          <div class="card-deck row">
+
+            <div id="technology" class="card">
+              <input class="card-img-btn" type="image" src="../images/technology.jpg" alt="technology">
               <div class="card-img-overlay">
                 <p class="card-text">Technology</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#science"><img class="card-img-top" src="../images/science.jpeg" alt="science"></a>
+
+            <div id="science" class="card">
+              <input class="card-img-btn" type="image" src="../images/science.jpeg" alt="science">
               <div class="card-img-overlay">
                 <p class="card-text">Science</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#literature"><img class="card-img-top" src="../images/literature.jpeg" alt="literature"></a>
+
+            <div id="literature" class="card">
+              <input class="card-img-btn" type="image" src="../images/literature.jpeg" alt="literature">
               <div class="card-img-overlay">
                 <p class="card-text">Literature</p>
               </div>
@@ -41,80 +47,98 @@
 
           </div>
 
+
           <div class="card-deck">
-            <div class="card">
-              <a href="#health"><img class="card-img-top" src="../images/health.jpeg" alt="health"></a>
+            
+            <div id="health" class="card">
+              <input class="card-img-btn" type="image" src="../images/health.jpeg" alt="health">
+
               <div class="card-img-overlay">
                 <p class="card-text">Health</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#business"><img class="card-img-top" src="../images/business.jpeg" alt="business"></a>
+            
+            <div id="business" class="card">
+              <input class="card-img-btn" type="image" src="../images/business.jpeg" alt="business">
               <div class="card-img-overlay">
                 <p class="card-text">Business</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#arts"><img class="card-img-top" src="../images/arts.jpeg" alt="arts"></a>
+            
+            <div id="arts" class="card">
+              <input class="card-img-btn" type="image" src="../images/arts.jpeg" alt="arts">
               <div class="card-img-overlay">
                 <p class="card-text">Arts</p>
               </div>
             </div>
+          
           </div>
 
           <div class="card-deck">
-            <div class="card">
-              <a href="#culture"><img class="card-img-top" src="../images/culture.jpeg" alt="culture"></a>
+            
+            <div id="culture" class="card">
+              <input class="card-img-btn" type="image" src="../images/culture.jpeg" alt="culture">
+
               <div class="card-img-overlay">
                 <p class="card-text">Culture</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#education"><img class="card-img-top" src="../images/education.jpeg" alt="education"></a>
+
+            <div id="education" class="card">
+              <input class="card-img-btn" type="image" src="../images/education.jpeg" alt="education">
               <div class="card-img-overlay">
                 <p class="card-text">Education</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#engineering"><img class="card-img-top" src="../images/engineering.jpg" alt="engineering"></a>
+
+            <div id="engineering" class="card">
+              <input class="card-img-btn" type="image" src="../images/engineering.jpg" alt="engineering">
               <div class="card-img-overlay">
                 <p class="card-text">Engineering</p>
               </div>
             </div>
+          
           </div>
 
+
           <div class="card-deck">
-            <div class="card">
-              <a href="#politics"><img class="card-img-top" src="../images/politics.jpeg" alt="politics"></a>
+            
+            <div id="politics" class="card">
+              <input class="card-img-btn" type="image" src="../images/politics.jpeg" alt="politics">
               <div class="card-img-overlay">
                 <p class="card-text">Politics</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#psychology"><img class="card-img-top" src="../images/psychology.jpeg" alt="psychology"></a>
+            
+            <div id="psychology" class="card">
+              <input class="card-img-btn" type="image" src="../images/psychology.jpeg" alt="psychology">
               <div class="card-img-overlay">
                 <p class="card-text">Psychology</p>
               </div>
             </div>
-            <div class="card">
-              <a href="#sports"><img class="card-img-top" src="../images/sports.jpeg" alt="sports"></a>
+            
+            <div id="sports" class="card">
+              <input class="card-img-btn" type="image" src="../images/sports.jpeg" alt="sports">
               <div class="card-img-overlay">
                 <p class="card-text">Sports</p>
               </div>
             </div>
+          
           </div>
+        
         </div>
 
       </main>
 
       <aside>
-        <%include partials/_activity-bar %>
+        <%- include partials/_activity-bar %>
       </aside>
 
     </div>
 
-    <footer>
-      <% include partials/_footer %>
+    <footer class="align-items-end mt-0">
+
+      <%- include partials/_footer %>
     </footer>
 
   </body>

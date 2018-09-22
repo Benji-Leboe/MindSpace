@@ -37,12 +37,10 @@ async function seedTables(knex, Promise) {
       })
     }
   }
-
-  return deleteContents(deleteTables).then(() => {
-    return Promise.all([
-      addContents(createTables, content)
-    ]);
-  }).catch((err) => {
+  try {
+    await deleteContents(deleteTables);
+    await addContents(createTables, content);
+  } catch(err){
     console.log('Error: (', err, ') at constraint: (', err.constraint, ')');
-  });
+  };
 }
