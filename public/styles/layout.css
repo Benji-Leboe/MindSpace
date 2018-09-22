@@ -5,11 +5,12 @@
   margin-bottom: 2em;
 }
 
-.card {
+div.card {
   position: relative;
+  border: none;
 }
 
-.card .card-img-top {
+div.card .card-img-top {
   opacity: 1;
   display: block;
   width: 100%;
@@ -17,7 +18,7 @@
   backface-visibility: hidden;
 }
 
-.card:hover .card-text {
+div.card:hover .card-text {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -27,23 +28,22 @@
   pointer-events: none;
 }
 
-.card .card-img-btn {
+div.card .card-img-btn {
   position: relative;
   opacity: 1;
   display: block;
   width: 100%;
   transition: .2s ease;
-  backface-visibility: hidden;
 }
 
-.card .card-img-overlay {
+div.card .card-img-overlay {
   transition: .5s ease;
   opacity: 0;
   text-align: center;
   font-size: 1.4rem;
 }
 
-.card .card-img-overlay:hover {
+div.card .card-img-overlay:hover {
   opacity: 0.7;
   background-color: #313d4e;
 }
@@ -129,4 +129,8 @@ body h1 {
 footer {
   background: url("../images/nav-bar.jpg");
   color: white;
+}
+
+.modal-backdrop {
+  background-image: url("../images/spacebackdrop.jpg");
 }
