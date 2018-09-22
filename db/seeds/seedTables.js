@@ -25,7 +25,16 @@ async function seedTables(knex, Promise) {
     for (let [i, table] of tableArr.entries()) {
       console.log('Target table:', table);
       await knex(table).insert(contentArr[i]).returning('*')
-      .then(console.log('Attempting to insert', contentArr[i], "in table", table));
+      .then(console.log('Attempting to insert', contentArr[i], "in table", table))
+      .then(() => {
+        knex.raw("SELECT setval('categories_id_seq', (SELECT MAX(id) FROM categories)+1);"),
+        knex.raw("SELECT setval('comments_id_seq', (SELECT MAX(id) FROM comments)+1);"),
+        knex.raw("SELECT setval('likes_id_seq', (SELECT MAX(id) FROM likes)+1);"),
+        knex.raw("SELECT setval('ratings_id_seq', (SELECT MAX(id) FROM ratings)+1);"),
+        knex.raw("SELECT setval('subjects_id_seq', (SELECT MAX(id) FROM subjects)+1);"),
+        knex.raw("SELECT setval('resources_id_seq', (SELECT MAX(id) FROM resources)+1);"),
+        knex.raw("SELECT setval('subjects_id_seq', (SELECT MAX(id) FROM subjects)+1);")
+      })
     }
   }
   try {
