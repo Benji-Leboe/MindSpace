@@ -1,41 +1,41 @@
 [
   {
     "id": 1,
-    "name": "Precalculus"
+    "subject_name": "Precalculus"
   },
 
   {
     "id": 2,
-    "name": "Calculus I"
+    "subject_name": "Calculus I"
   },
 
   {
     "id": 3,
-    "name": "Calculus II"
+    "subject_name": "Calculus II"
   },
 
   {
     "id": 4,
-    "name": "Javascript"
+    "subject_name": "Javascript"
   },
 
   {
     "id": 5,
-    "name": "Python"
+    "subject_name": "Python"
   },
 
     {
     "id": 6,
-    "name": "BootStrap"
+    "subject_name": "BootStrap"
   },
 
     {
     "id": 7,
-    "name": "Chemistry 12"
+    "subject_name": "Chemistry 12"
   },
 
     {
     "id": 8,
-    "name": "Physics 12"
+    "subject_name": "Physics 12"
   }
 ]
