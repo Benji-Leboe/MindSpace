@@ -40,7 +40,7 @@
   transition: .5s ease;
   opacity: 0;
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.4rem;
 }
 
 .card .card-img-overlay:hover {

@@ -28,12 +28,10 @@ async function seedTables(knex, Promise) {
       .then(console.log('Attempting to insert', contentArr[i], "in table", table));
     }
   }
-
-  return deleteContents(deleteTables).then(() => {
-    return Promise.all([
-      addContents(createTables, content)
-    ]);
-  }).catch((err) => {
+  try {
+    await deleteContents(deleteTables);
+    await addContents(createTables, content);
+  } catch(err){
     console.log('Error: (', err, ') at constraint: (', err.constraint, ')');
-  });
+  };
 }
