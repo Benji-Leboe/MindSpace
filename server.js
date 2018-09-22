@@ -122,12 +122,12 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
-  app.get("/test2", cacheView, (req, res) => {
-    res.render("test_templates2");
+  app.get("/ardelia", cacheView, (req, res) => {
+    res.render("test_templates");
   });
 
-  app.get("/test", cacheView, (req, res) => {
-    res.render("test_templates");
+  app.get("/rohit", cacheView, (req, res) => {
+    res.render("test_templates2");
   });
 
   // view profile- bio etc.
