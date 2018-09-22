@@ -123,6 +123,7 @@ app.use(session({
   });
 
   app.get("/test", (req, res) => {
+    console.log("Test route success");
     res.render("test_templates");
   })
 
