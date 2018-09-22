@@ -2,20 +2,16 @@
 
 
 #nav-bar {
-    background: url("../images/nav-bar.jpg") no-repeat;
-    height: 200px;
-    #nav-bar-contents {
-        #login-register {
-            margin-top: 150px;
-        }
-        #mindspace-title {
-            color: $color5;
-            font-size: 5rem;
-            text-align: center;
-            margin-top: 0.5em;
-        }
-        #searchbar {
-            margin-top: 150px;
-        }
+  background: url("../images/nav-bar.jpg") no-repeat;
+  height: 8rem;
+
+  #nav-bar-contents {
+
+    #mindspace-title {
+      color: $color5;
+      font-size: 5rem;
+      text-align: center;
     }
+
+  }
 }

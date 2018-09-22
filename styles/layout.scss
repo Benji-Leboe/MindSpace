@@ -4,15 +4,26 @@
 @import "partials/header";
 @import "partials/activity-bar";
 
+html {
+  font-size: 16px;
+
+  @media (max-width: 1200px) {
+    font-size: calc(6px + .4vw);
+  }
+}
+
+
 body {
-  background-color: #EEE;
-  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(26, 26, 26, 0.849) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  min-height: 100%;
   h1 {
     color: #244751;
   }
 }
 
-
-
-
+footer {
+  background: url("../images/nav-bar.jpg");
+  color: $color5;
+}
 

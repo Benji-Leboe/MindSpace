@@ -14,18 +14,15 @@
     <div class="container-fluid">
 
       <main class="row">
-        <div class="col-3">
-          <%- include partials/_side-nav %>
-        </div>
 
-        <div class="col-3 pl-0">
+        <div class="side-nav col-2 pl-0 mb-0">
           <% include partials/_side-nav %>
         </div>
 
-        <div id="subjectGrid" class="col-6">
+        <div id="subjectGrid" class="col-8">
 
-        <div class="col-6 mt-5">
-          <div class="card-deck">
+        <div class="mt-5">
+          <div class="card-deck row">
 
             <div id="technology" class="card">
               <input class="card-img-btn" type="image" src="../images/technology.jpg" alt="technology">
@@ -50,10 +47,12 @@
 
           </div>
 
+
           <div class="card-deck">
             
             <div id="health" class="card">
               <input class="card-img-btn" type="image" src="../images/health.jpeg" alt="health">
+
               <div class="card-img-overlay">
                 <p class="card-text">Health</p>
               </div>
@@ -79,6 +78,7 @@
             
             <div id="culture" class="card">
               <input class="card-img-btn" type="image" src="../images/culture.jpeg" alt="culture">
+
               <div class="card-img-overlay">
                 <p class="card-text">Culture</p>
               </div>
@@ -99,6 +99,7 @@
             </div>
           
           </div>
+
 
           <div class="card-deck">
             
@@ -135,7 +136,8 @@
 
     </div>
 
-    <footer class="fixed-bottom">
+    <footer class="align-items-end mt-0">
+
       <%- include partials/_footer %>
     </footer>
 

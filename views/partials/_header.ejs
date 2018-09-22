@@ -1,15 +1,15 @@
 <nav id="nav-bar" class="container-fluid pt-1 pb-1 pl-1 pr-1 mb-auto">
 
-  <div id="nav-bar-contents" class="container-fluid row justify-content-between">
+  <div id="nav-bar-contents" class="container-fluid row justify-content-between align-items-center">
     <span id="login-register" class="row">
       <!--LOGIN-->
       <span class="row pl-2 pr-2 mr-1 ml-2">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle ml-2 mr-1" type="button" id="loginDropdown" data-toggle="dropdown">
+        <div id="loginDropdown" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle ml-2 mr-1" type="button" id="loginDropToggle" data-toggle="dropdown">
             Login
           </button>
           <div class="dropdown-menu">
-            <form class="px-3 py-3">
+            <form id="loginForm" class="px-3 py-3">
               <div class="form-group">
                 <label for="loginFormEmail">
                   Email Address
@@ -32,12 +32,12 @@
         </div>
         
         <!--REGISTER-->
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle ml-1 mr-1" type="button" id="registerDropdown" data-toggle="dropdown">
+        <div id="registerDropdown" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle ml-1 mr-1" type="button" id="registerDropToggle" data-toggle="dropdown">
             Register
           </button>
           <div class="dropdown-menu">
-            <form class="px-3 py-3">
+            <form id="registerForm" class="px-3 py-3">
               <div class="form-group">
                 <label for="registerFormEmail">
                   Email Address
