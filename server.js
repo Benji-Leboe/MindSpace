@@ -39,7 +39,7 @@ const helper           = require('./helper_functions/helpers');
 
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const usersRoutes      = require("./routes/users");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -88,7 +88,10 @@ app.use(session({
   store: new MemcachedStore({
     hosts: process.env.MEMCACHIER_SERVERS || 
             process.env.MEMCACHE_SERVERS || ['localhost:11211']
-  })
+  }),
+  resave: false,
+  saveUninitialized: false,
+  unset: 'destroy'
 }));
 
   /* APP GET ROUTES */
@@ -113,6 +116,9 @@ app.use(session({
 
   // view posts for specific subject
   app.get("/:subject_id", (req, res) => {
+    let subject = req.params.subject_id;
+    //query subject from DB
+
     res.render("subject_list");
   });
 
@@ -126,18 +132,29 @@ app.use(session({
 
   // register user via AJAX and submit json data to DB
   app.post('/register', (req, res) => {
-
+    console.log(req.body);
+    res.end();
   });
 
   // check user login and get user data from DB, relay to app.js via AJAX
   app.post('/login', (req, res) => {
-
+    console.log(req.body);
+    knex
+      .select("*")
+      .from("users")
+      .then((results) => {
+        console.log("Users get successful from login!");
+        res.json(results);
+    });
+    // res.end();
   });
 
   // clear user session
   app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
-      store.destroy
+      if (err) throw err;
+
+      store.destroy();
     });
   });
 
