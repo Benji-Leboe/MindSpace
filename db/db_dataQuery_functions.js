@@ -13,12 +13,12 @@ function findUser(email){
   return knex.select('*').from('users')
   		.where('email', '=', email)
   		.asCallback(function(err, rows){
-  			if (err) return console.error(err);
+  			if (err) return err;
 		    return rows;
-		})
-		.finally(function() {
-			knex.destroy();
-		});
+  		})
+  		.finally(function() {
+  			knex.destroy();
+  		});
 }
 /*
 findUser(searchEmail).then(function(result) {
@@ -33,7 +33,7 @@ function findUserResources(email){
   		.rightJoin('subjects', 'subjects.id', 'categories.subject_id')
   		.where('email', '=', email)
   		.asCallback(function(err, rows){
-  			if (err) return console.error(err);
+  			if (err) return err;
   			return rows;
   		})
   		.finally(function() {
@@ -53,7 +53,7 @@ function findUserLikedResources(email){
       .rightJoin('subjects', 'subjects.id', 'categories.subject_id')
       .where('email', '=', email)
       .asCallback(function(err, rows){
-        if (err) return console.error(err);
+        if (err) return err;
         return rows;
       })
       .finally(function() {
@@ -72,7 +72,7 @@ function findResourceRating(email){
       .rightJoin('resources', 'resources.id', 'ratings.resource_id')
       .where('email', '=', email)
       .asCallback(function(err, rows){
-        if (err) return console.error(err);
+        if (err) return err;
         return rows;
       })
       .finally(function() {
@@ -90,7 +90,7 @@ function findResourceComments(email){
       .rightJoin('resources', 'resources.id', 'comments.resource_id')
       .where('email', '=', email)
       .asCallback(function(err, rows){
-        if (err) return console.error(err);
+        if (err) return err;
         return rows;
       })
       .finally(function() {
