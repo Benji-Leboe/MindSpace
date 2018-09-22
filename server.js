@@ -122,6 +122,10 @@ app.use(session({
     res.render("subject_list");
   });
 
+  app.get("/test", (req, res) => {
+    res.render("test_templates");
+  })
+
   // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
   app.get("/:subject_id/:post_id", (req, res) => {
