@@ -5,6 +5,8 @@ var knex = require('knex')(knexConfig[ENV]);
 
 module.exports = {
 
+	name: "insert functions",
+
 	insertUser: function(user){
 	//insert user into database
 		knex.insert(user).into('users')
@@ -15,30 +17,28 @@ module.exports = {
 		.finally(function() {
 		  knex.destroy();
 		});
-	}
+	},
 
-	insertSource: function(source, subject){
+	insertSource: function(resource, subject){
 	//insert resource and resource subject into database
 		knex("resources")
 		.returning("id")
-		.as("source_id")
-		.insert(source)
-		.then(([source_id]) => {
-			console.log(source_id);
+		.as("resource_id")
+		.insert(resource)
+		.then(([resource_id]) => {
 			knex("subjects")
 			.returning("id")
 			.as("subject_id")
 			.insert(subject)
 			.then(([subject_id]) => {
-				console.log(source_id, subject_id);
 				knex("categories")
-				.insert({resource_id: source_id, subject_id: subject_id})
+				.insert({resource_id: resource_id, subject_id: subject_id})
 				.finally(function() {
 					knex.destroy();
 				});
 			})
 		})
-	}
+	},
 
 	insertLike: function(userid, resourceid){
 	//insert current user liked resource
@@ -51,7 +51,7 @@ module.exports = {
 		.finally(function() {
 		  knex.destroy();
 		});
-	}
+	},
 
 	insertRating: function(userid, resourceid, rating){
 	//insert current user rating to resource
@@ -64,7 +64,7 @@ module.exports = {
 		.finally(function() {
 		  knex.destroy();
 		});
-	}
+	},
 
 	insertComment: function(userid, resourceid, comment){
 	//insert current user comment to resource

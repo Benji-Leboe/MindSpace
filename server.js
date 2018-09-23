@@ -35,7 +35,8 @@ const knexLogger       = require('knex-logger');
 
 //local imports
 const helper           = require('./helper_functions/helpers');
-
+const query              = require('./db/db_data_query_functions.js');
+const insert             = require('./db/db_data_insert_functions.js');
 
 
 // Seperated Routes for each Resource
@@ -169,12 +170,38 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
+
+    const external_url = req.body.external_url;
     let post_id = helper.generateRandomString();
+    const title = req.body.title;
+    const description = req.body.description;
+    const user_id = req.body.user_id;
+    const subject_name = req.body.subject_name;
+
+    let resource = {
+      "external_url": external_url,
+      "post_id": post_id,
+      "title": title,
+      "description": description,
+      "user_id": user_id
+    };
+    let subject = {
+      "subject_name": subject_name
+    };
+    insert.insertSource(resource, subject);
+    res.end();
+
   });
 
   // like post, increment like count, add post to user likes 
   // (user cannot like own post)
   app.put('/like', (req, res) => {
+
+    const userid = req.body.user_id;
+    const resourceid = req.body.resource_id;
+
+    insert.insertLike(userid, resourceid);
+    res.end();
 
   });
 
@@ -182,10 +209,24 @@ const cacheView = (req, res, next) => {
   // (user cannot rate own post) 
   app.put('/rate', (req, res) => {
 
+    const userid = req.body.user_id;
+    const resourceid = req.body.resource_id;
+    const rating = req.body.rating;
+
+    insert.insertRating(userid, resourceid, rating);
+    res.end();
+
   });
 
   // submit comment
   app.post('/comment', (req, res) => {
+
+    const userid = req.body.user_id;
+    const resourceid = req.body.resource_id;
+    const comment = req.body.comment;
+
+    insert.insertComment(userid, resourceid, comment);
+    res.end();
 
   });
 

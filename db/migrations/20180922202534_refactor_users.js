@@ -21,6 +21,7 @@ exports.up = function(knex, Promise) {
     }).createTable('resources', function(table) {
       console.log("Resources table created");
       table.increments('id');
+      table.string('post_id');
       table.string('external_url');
       table.string('title');
       table.string('description');

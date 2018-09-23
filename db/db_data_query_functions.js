@@ -6,6 +6,8 @@ var knex = require('knex')(knexConfig[ENV]);
 module.exports = {
   //Test functions, run below
   //node db/db_query_functions.js
+  name: "query functions",
+
   findUser: function(email){
     return knex.select('*').from('users')
     		.where('email', '=', email)
