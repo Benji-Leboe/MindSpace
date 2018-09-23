@@ -106,6 +106,27 @@ div.card .card-img-overlay:hover {
   margin-top: 0px;
 }
 
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+#create-post-modal {
+  background-color: #313d4e;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+#view-post-modal {
+  background-color: #313d4e;
+}
+
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
 html {
   font-size: 16px;
 }
@@ -120,10 +141,6 @@ body {
   background-color: rgba(26, 26, 26, 0.849) !important;
   font-family: 'Montserrat', sans-serif !important;
   min-height: 100%;
-}
-
-body h1 {
-  color: #244751;
 }
 
 footer {

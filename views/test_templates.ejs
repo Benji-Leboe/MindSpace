@@ -5,35 +5,38 @@
   </head>
   
   <body>
-    <section id="create-post-modal" class="container d-flex justify-content-center">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create Post</button>
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div id="create-post-modal" class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-light" id="exampleModalLabel">Create Post</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
 
-      <form class="container col-6">
+      <form>
         
-        <div class="row">
-          <button type="button" class="close" aria-label="Close"><div aria-hidden="true">&times;</div></button>
-        </div>
-
-        <div id="create-post-title" class="row p-3 mb-2 bg-dark text-white justify-content-center">
-          <h1>Create a Post</h1>
-        </div>
-        
-        <div class="form-group row">
-          <label for="post-title">Title</label>
+        <div class="form-group">
+          <label class="text-light" for="post-title">Title</label>
           <input type="text" class="form-control" id="post-title" placeholder="Title">
         </div>
 
-        <div class="form-group row">
-          <label for="external-url">External URL</label>
+        <div class="form-group">
+          <label class="text-light" for="external-url">External URL</label>
           <input type="url" class="form-control" id="external-url" value="https://">
         </div>
 
-        <div class="form-group row">
-          <label for="description-textarea">Description</label>
+        <div class="form-group row pl-4 pr-4">
+          <label class="text-light" for="description-textarea">Description</label>
           <textarea class="form-control" id="description-textarea" rows="3"></textarea>
         </div>
 
-        <div class="form-group row">
-          <label for="select-subject">Subject</label>
+        <div class="form-group row pl-4 pr-4">
+          <label class="text-light" for="select-subject">Subject</label>
           <select class="form-control" id="select-subject">
             <option selected>Select a subject</option>
             <option>Technology</option>
@@ -50,12 +53,17 @@
             <option>Sports</option>
           </select>
         </div>
-        
-        <button type="submit" class="btn btn-secondary row">Create</button>
       
       </form>
       
-    </section>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-secondary">Create</button>
+    </div>
+  </div>
+</div>
+</div>
 
   </body>
 </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ./partials/_head %>
+  </head>
+  
+  <body>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">View Post</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div id="view-post-modal" class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-light" id="exampleModalLabel">Title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          </div>
+        <div class="modal-body">
+            <div id="content-container" class="container">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div>
+              <iframe width="100%" height="250" src=""></iframe>
+        </div>
+            </div>
+        
+              <div id="posted-by" class="container">
+              </div>
+        
+              <section id="ratings-likes" class="container">
+              </section>
+              
+              <section id="comment-section" class="container pl-5">
+                <div class="comments-section-header">
+                  <label>Comment Box</label>
+                  
+                </div>
+                
+                <div class="comment-action">
+                  <ul class="comments-list">
+                    <li>
+                      <div class="commenter-avatar">
+                        <img src="#"/>
+                      </div>
+                      <div class="comment-text">
+                        <p>Test comment</p> <span class="date sub-text">Test date</span>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="commenter-avatar">
+                        <img src="#"/>
+                      </div>
+                       <div class="comment-text">
+                        <p class="">Test comment 2</p> <span class="date sub-text">Test date</span>
+                      </div>
+                    </li>
+                  </ul>
+                  <form class="form-inline" role="form">
+                    <div class="form-group m-auto pb-4">
+                      <input class="form-control" type="text" placeholder="Your comments"/>
+                      <button class="btn btn-secondary">Add</button>
+                    </div>
+                  </form>
+                </div>
+              </section>
+      
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

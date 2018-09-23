@@ -3,6 +3,8 @@
 @import "partials/palette";
 @import "partials/header";
 @import "partials/activity-bar";
+@import "partials/test-templates";
+@import "partials/rohit";
 
 html {
   font-size: 16px;
@@ -17,9 +19,6 @@ body {
   background-color: rgba(26, 26, 26, 0.849) !important;
   font-family: 'Montserrat', sans-serif !important;
   min-height: 100%;
-  h1 {
-    color: #244751;
-  }
 }
 
 footer {

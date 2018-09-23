@@ -131,7 +131,7 @@ const cacheView = (req, res, next) => {
   });
 
   app.get("/rohit", cacheView, (req, res) => {
-    res.render("test_templates2");
+    res.render("rohit");
   });
 
   // view profile- bio etc.
