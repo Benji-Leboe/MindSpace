@@ -1,5 +1,6 @@
 [
   {
+    "post_id": "s7ehj2w1",
     "external_url": "https://www.amazon.com/",
     "title": "amazon",
     "description": "online shopping website",
@@ -7,6 +8,7 @@
   },
 
   {
+    "post_id": "s7ehj2w2",
     "external_url": "https://www.google.com/",
     "title": "google",
     "description": "online search engine",
@@ -14,6 +16,7 @@
   },
 
   {
+    "post_id": "s7ehj2w3",
     "external_url": "https://www.lighthouselabs.ca/",
     "title": "lighthouselabs",
     "description": "Web development bootcamp",
@@ -21,6 +24,7 @@
   },
 
   {
+    "post_id": "s7ehj2w4",
     "external_url": "https://getbootstrap.com/",
     "title": "Bootstrap",
     "description": "the world's most popular front-end component library.",
@@ -28,6 +32,7 @@
   },
 
   {
+    "post_id": "s7ehj2w5",
     "external_url": "https://www.lighthouselabs.ca/",
     "title": "lighthouselabs",
     "description": "Web development bootcamp",
@@ -35,6 +40,7 @@
   },
 
   {
+    "post_id": "s7ehj2w6",
     "external_url": "https://node-postgres.com/",
     "title": "node-postages",
     "description": "node.js modules for interfacing with your PostgreSQL database",
@@ -42,6 +48,7 @@
   },
 
   {
+    "post_id": "s7ehj2w7",
     "external_url": "https://www.evernote.com/",
     "title": "evernote",
     "description": "Web note website",
