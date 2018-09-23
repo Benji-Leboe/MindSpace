@@ -18,9 +18,8 @@ module.exports = (knex) => {
   });
 
   router.post("/register", (req, res) => {
-    let {email, username, password, passwordCheck} = req.body;
+    let { email, username, password, passwordCheck } = req.body;
     console.log("request recieved");
-    let passHash;
 
     if (password !== passwordCheck){
       res.status(403).send();
@@ -33,28 +32,35 @@ module.exports = (knex) => {
           email,
           username,
           "password": result
-        }
+        };
         return user;
+
       }).then((user) => {
         console.log(user);
         knex.insert(user).into('users')
         .returning('*')
+
         .then((rows) => {
           console.log("Insert successful!");
           return rows;
+
         }).catch((err) => {
-          res.send(err);
+          res.status(500).send(err);
+
         }).then(() => {
           knex.destroy();
           res.status(201).send();
         });
+        
       }).catch((err) => {
-        res.send(err);
+        res.status(500).send(err);
       });
     }
-
-    
   });
+
+  router.post("/login", (req, res) => {
+    let { username, password } = req.body;
+  })
 
   return router;
 }

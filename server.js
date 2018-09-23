@@ -158,25 +158,6 @@ const cacheView = (req, res, next) => {
 
   /* APP POST ROUTES */
 
-  // register user via AJAX and submit json data to DB
-  app.post('/register', (req, res) => {
-    console.log(req.body);
-    res.end();
-  });
-
-  // check user login and get user data from DB, relay to app.js via AJAX
-  app.post('/login', (req, res) => {
-    console.log(req.body);
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        console.log("Users get successful from login!");
-        res.json(results);
-    });
-    // res.end();
-  });
-
   // clear user session
   app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
@@ -189,18 +170,7 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-    
-  });
-
-  // edit post
-  // (user can only edit own post) 
-  app.put('/post/edit/:post_id', (req, res) => {
-
-  });
-
-  // owner remove post from DB
-  app.delete('/post/delete/:post_id', (req, res) => {
-
+    let post_id = helper.generateRandomString();
   });
 
   // like post, increment like count, add post to user likes 
@@ -217,6 +187,17 @@ const cacheView = (req, res, next) => {
 
   // submit comment
   app.post('/comment', (req, res) => {
+
+  });
+
+  // edit post
+  // (user can only edit own post) 
+  app.put('/post/edit/:post_id', (req, res) => {
+
+  });
+
+  // owner remove post from DB
+  app.delete('/post/delete/:post_id', (req, res) => {
 
   });
 

@@ -29,7 +29,7 @@ module.exports = {
     for (let i = 0; i <= 10; i++) {
       string += Math.random().toString(36).substr(2, 15);
     }
-    return string.substr(1,10);
+    return string.substr(1,8);
   },
   //check for http prefix
   httpCheck: (url) => {
