@@ -5,6 +5,7 @@ $(function() {
   postLogin();
   postLogout();
   getSubject();
+  fetchPreview();
 });
 
 
@@ -20,18 +21,61 @@ function getUsers() {
   });
 };
 
-function getSubject(){
+function getSubject() {
   $('#subjectGrid').on('click', function(event) {
     event.preventDefault();
     var currentTarget = $(event.target);
     var destination = $(currentTarget).parent('.card').attr('id');
     $.ajax({
       method: "GET",
-      url: `/subjects/${destination}`
-    })
+      url: `/subjects/${destination}`,
+      success: function(data) {
+        console.log("AJAX response data:", data);
+        //figure out async function handling
+      }
+    });
+  });
 
+  $(document).ready(function() {
+    $('a.subject-link').on('click', function(event) {
+      event.preventDefault();
+      var currentTarget = $(event.target);
+      console.log(currentTarget);
+      var destination = $(currentTarget).text();
+      console.log(destination);
+      $.ajax({
+        method: "GET",
+        url: `/subjects/${destination}`,
+        success: function(data) {
+          //figure out async function handling
+          
+        }
+      });
+    });
   });
 }
+
+function fetchPreview(url) {
+  console.log('function called');
+  $.ajax({
+    url: `https://api.linkpreview.net?key=5ba7bba9b092023678bec1cebcf7cab6ea56b2ec203cf&q=${url}`,
+    type: "GET",
+    contentType: "application/json",
+    success: function(result){
+      console.log("request success");
+      return result;
+    }
+  });
+}
+
+function listBuilder(responseObject) {
+  console.log(responseObject);
+  var { id, post_id, external_url, title, description, created_at, user_id } = responseObject;
+  console.log(external_url);
+  var linkPreview = fetchPreview(external_url);
+  console.log(linkPreview);
+}
+
 
 function postRegister() {
   $('#nav-bar').on('submit', '#registerForm', function(event) {
