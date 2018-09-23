@@ -105,6 +105,11 @@ div.card .card-img-overlay:hover {
   display: none;
 }
 
+#nav-bar #nav-bar-contents #navSearch input {
+  background-color: rgba(220, 220, 240, 0.6);
+  color: black;
+}
+
 #activity-bar {
   background-color: #353535;
   margin-top: 0px;
