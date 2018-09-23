@@ -131,6 +131,13 @@ div.card .card-img-overlay:hover {
   transition: transform 0.3s ease-out;
 }
 
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+div#profile-container {
+  background-color: rgba(105, 105, 98, 0.5);
+}
+
 html {
   font-size: 16px;
 }
