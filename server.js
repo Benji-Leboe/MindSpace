@@ -95,21 +95,22 @@ app.use(session({
 }));
 
 const cacheView = (req, res, next) => {
-  let view_key = '_view_cache_' + req.originalUrl || req.url;
-  mc.get(view_key, (err, val) => {
-    if (err === null && val !== null) {
-      res.send(val.toString('utf8'));
-      return;
-    }
-    res.sendRes = res.send;
-    res.send = (body) => {
-      mc.set(view_key, body, { expires: 0 }, (err, val) => {
-        if (err) throw err;
-      });
-      res.sendRes(body);
-    }
-    next();
-  });
+  // let view_key = '_view_cache_' + req.originalUrl || req.url;
+  // mc.get(view_key, (err, val) => {
+  //   if (err === null && val !== null) {
+  //     res.send(val.toString('utf8'));
+  //     return;
+  //   }
+  //   res.sendRes = res.send;
+  //   res.send = (body) => {
+  //     mc.set(view_key, body, { expires: 0 }, (err, val) => {
+  //       if (err) throw err;
+  //     });
+  //     res.sendRes(body);
+  //   }
+  //   next();
+  // });
+  next();
 }
 
   /* APP GET ROUTES */
@@ -127,7 +128,7 @@ const cacheView = (req, res, next) => {
   });
 
   app.get("/rohit", cacheView, (req, res) => {
-    res.render("test_templates2");
+    res.render("rohit");
   });
 
   // view profile- bio etc.
