@@ -7,76 +7,81 @@ module.exports = {
   //Test functions, run below
   //node db/db_query_functions.js
   name: "query functions",
+  findSubjects: (subject) => {
+    return knex.select('*').from('subjects')
+      .where('subject_name', '=', subject)
+      .returning('*')
+      .then((rows) => {
+         return rows; 
+      }).catch((err) => {
+         throw err;
+      });    
+    },
 
   findUser: function(email){
     return knex.select('*').from('users')
-    		.where('email', '=', email)
-    		.asCallback(function(err, rows){
-    			if (err) return err;
-  		    return rows;
-    		})
-    		.finally(function() {
-    			knex.destroy();
-    		});
+      .where('email', '=', email)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findUserResources: function(user_id){
+    return knex.select('*').from('users')
+    	.leftJoin('resources', 'users.id', 'resources.user_id')
+    	.leftJoin('categories', 'resources.id', 'categories.resource_id')
+    	.rightJoin('subjects', 'subjects.id', 'categories.subject_id')
+    	.where('id', '=', user_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findUserLikedResources: function(user_id){
+    return knex.select('*').from('users')
+      .leftJoin('likes', 'users.id', 'likes.user_id')
+      .rightJoin('resources', 'resources.id', 'likes.resource_id')
+      .leftJoin('categories', 'resources.id', 'categories.resource_id')
+      .rightJoin('subjects', 'subjects.id', 'categories.subject_id')
+      .where('id', '=', user_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
   },
 
-  findUserResources: function(userid){
+  findResourceRating: function(user_id){
     return knex.select('*').from('users')
-    		.leftJoin('resources', 'users.id', 'resources.user_id')
-    		.leftJoin('categories', 'resources.id', 'categories.resource_id')
-    		.rightJoin('subjects', 'subjects.id', 'categories.subject_id')
-    		.where('id', '=', userid)
-    		.asCallback(function(err, rows){
-    			if (err) return err;
-    			return rows;
-    		})
-    		.finally(function() {
-    			knex.destroy();
-    		});
-  },
+      .leftJoin('ratings', 'users.id', 'ratings.user_id')
+      .rightJoin('resources', 'resources.id', 'ratings.resource_id')
+      .where('id', '=', user_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
 
-  findUserLikedResources: function(email){
+  findResourceComments: function(user_id){
     return knex.select('*').from('users')
-        .leftJoin('likes', 'users.id', 'likes.user_id')
-        .rightJoin('resources', 'resources.id', 'likes.resource_id')
-        .leftJoin('categories', 'resources.id', 'categories.resource_id')
-        .rightJoin('subjects', 'subjects.id', 'categories.subject_id')
-        .where('email', '=', email)
-        .asCallback(function(err, rows){
-          if (err) return err;
-          return rows;
-        })
-        .finally(function() {
-          knex.destroy();
-        });
-  },
-
-  findResourceRating: function(email){
-    return knex.select('*').from('users')
-        .leftJoin('ratings', 'users.id', 'ratings.user_id')
-        .rightJoin('resources', 'resources.id', 'ratings.resource_id')
-        .where('email', '=', email)
-        .asCallback(function(err, rows){
-          if (err) return err;
-          return rows;
-        })
-        .finally(function() {
-          knex.destroy();
-        });
-  },
-
-  findResourceComments: function(email){
-    return knex.select('*').from('users')
-        .leftJoin('comments', 'users.id', 'comments.user_id')
-        .rightJoin('resources', 'resources.id', 'comments.resource_id')
-        .where('email', '=', email)
-        .asCallback(function(err, rows){
-          if (err) return err;
-          return rows;
-        })
-        .finally(function() {
-          knex.destroy();
-        });
-  }
+      .leftJoin('comments', 'users.id', 'comments.user_id')
+      .rightJoin('resources', 'resources.id', 'comments.resource_id')
+      .where('id', '=', user_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    }
 
 }
