@@ -13,11 +13,9 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('users', function(table) {
       console.log("Users table created");
       table.uuid('id').notNullable().primary();
-      table.string('first_name');
-      table.string('last_name');
       table.string('email').notNullable().unique();
       table.string('username').notNullable().unique();
-      table.string('password');
+      table.string('password').notNullable();
       table.string('avatar');
       table.string('bio');
     }).createTable('resources', function(table) {
@@ -30,10 +28,9 @@ exports.up = function(knex, Promise) {
       table.uuid('user_id').unsigned().references('id').inTable('users');
     }).createTable('subjects', function(table) {
       console.log("Subjects table created");
-			table.increments('id');
-      table.string('subject_name').notNullable();
-      
-		}).createTable('likes', function(table){
+      table.increments('id');
+      table.string('subject_name').notNullable().unique();
+    }).createTable('likes', function(table){
       console.log("Likes table created");
       table.increments('id');
       table.integer('resource_id').unsigned().references('id').inTable( 'resources' );

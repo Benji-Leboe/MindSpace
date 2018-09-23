@@ -5,8 +5,9 @@
   margin-bottom: 2em;
 }
 
-.card {
+div.card {
   position: relative;
+  border: none; 
     .card-img-top {
       opacity: 1;
       display: block;
@@ -32,7 +33,6 @@
       display: block;
       width: 100%;
       transition: .2s ease;
-      backface-visibility: hidden;
       
     }
     

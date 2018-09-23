@@ -87,7 +87,7 @@ app.use(session({
   secret: [ $.KEY1, $.KEY2 ],
   store: new MemcachedStore({
     hosts: process.env.MEMCACHIER_SERVERS || 
-            process.env.MEMCACHE_SERVERS || ['localhost:11211']
+           process.env.MEMCACHE_SERVERS || ['localhost:11211']
   }),
   resave: false,
   saveUninitialized: false,
@@ -95,21 +95,22 @@ app.use(session({
 }));
 
 const cacheView = (req, res, next) => {
-  let view_key = '_view_cache_' + req.originalUrl || req.url;
-  mc.get(view_key, (err, val) => {
-    if (err === null && val !== null) {
-      res.send(val.toString('utf8'));
-      return;
-    }
-    res.sendRes = res.send;
-    res.send = (body) => {
-      mc.set(view_key, body, { expires: 0 }, (err, val) => {
-        if (err) throw err;
-      });
-      res.sendRes(body);
-    }
-    next();
-  });
+  // let view_key = '_view_cache_' + req.originalUrl || req.url;
+  // mc.get(view_key, (err, val) => {
+  //   if (err === null && val !== null) {
+  //     res.send(val.toString('utf8'));
+  //     return;
+  //   }
+  //   res.sendRes = res.send;
+  //   res.send = (body) => {
+  //     mc.set(view_key, body, { expires: 0 }, (err, val) => {
+  //       if (err) throw err;
+  //     });
+  //     res.sendRes(body);
+  //   }
+  //   next();
+  // });
+  next();
 }
 
   /* APP GET ROUTES */
@@ -122,14 +123,13 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
-  /* IF YOU NEED TO TEST MORE THAN ONE THING DUPLICATE THIS CODE AND CALL IT test2 */
-
-  app.get("/test", cacheView, (req, res) => {
-    //TO DUPLICATE CHANGE THE NAME BELOW TO MATCH YOUR TEST FILE
+  app.get("/ardelia", cacheView, (req, res) => {
     res.render("test_templates");
   });
 
-  //******************************* */
+  app.get("/rohit", cacheView, (req, res) => {
+    res.render("test_templates2");
+  });
 
   // view profile- bio etc.
   app.get("/profile/:user_id", cacheView, (req, res) => {
@@ -151,30 +151,11 @@ const cacheView = (req, res, next) => {
 
   // view post in specific subject 
   //**TODO: Make AJAX function to render over posts
-  app.get("subjects/:subject_id/:post_id", cacheView, (req, res) => {
+  app.get("/subjects/:subject_id/:post_id", cacheView, (req, res) => {
     res.render('view_post');
   });
 
   /* APP POST ROUTES */
-
-  // register user via AJAX and submit json data to DB
-  app.post('/register', (req, res) => {
-    console.log(req.body);
-    res.end();
-  });
-
-  // check user login and get user data from DB, relay to app.js via AJAX
-  app.post('/login', (req, res) => {
-    console.log(req.body);
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        console.log("Users get successful from login!");
-        res.json(results);
-    });
-    // res.end();
-  });
 
   // clear user session
   app.post('/logout', (req, res) => {
@@ -188,18 +169,7 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-    
-  });
-
-  // edit post
-  // (user can only edit own post) 
-  app.put('/post/:post_id', (req, res) => {
-
-  });
-
-  // owner remove post from DB
-  app.delete('/post/:post_id', (req, res) => {
-
+    let post_id = helper.generateRandomString();
   });
 
   // like post, increment like count, add post to user likes 
@@ -216,6 +186,17 @@ const cacheView = (req, res, next) => {
 
   // submit comment
   app.post('/comment', (req, res) => {
+
+  });
+
+  // edit post
+  // (user can only edit own post) 
+  app.put('/post/edit/:post_id', (req, res) => {
+
+  });
+
+  // owner remove post from DB
+  app.delete('/post/delete/:post_id', (req, res) => {
 
   });
 

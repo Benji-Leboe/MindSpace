@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ./partials/_head %>
+  </head>
+  
+  <body>
+    <section id="create-post-modal" class="container d-flex justify-content-center">
+
+      <form class="container col-6">
+        
+        <div class="row">
+          <button type="button" class="close" aria-label="Close"><div aria-hidden="true">&times;</div></button>
+        </div>
+
+        <div id="create-post-title" class="row p-3 mb-2 bg-dark text-white justify-content-center">
+          <h1>Create a Post</h1>
+        </div>
+        
+        <div class="form-group row">
+          <label for="post-title">Title</label>
+          <input type="text" class="form-control" id="post-title" placeholder="Title">
+        </div>
+
+        <div class="form-group row">
+          <label for="external-url">External URL</label>
+          <input type="url" class="form-control" id="external-url" value="https://">
+        </div>
+
+        <div class="form-group row">
+          <label for="description-textarea">Description</label>
+          <textarea class="form-control" id="description-textarea" rows="3"></textarea>
+        </div>
+
+        <div class="form-group row">
+          <label for="select-subject">Subject</label>
+          <select class="form-control" id="select-subject">
+            <option selected>Select a subject</option>
+            <option>Technology</option>
+            <option>Science</option>
+            <option>Arts</option>
+            <option>Business</option>
+            <option>Culture</option>
+            <option>Education</option>
+            <option>Engineering</option>
+            <option>Health</option>
+            <option>Literature</option>
+            <option>Politics</option>
+            <option>Psychology</option>
+            <option>Sports</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn btn-secondary row">Create</button>
+      
+      </form>
+      
+    </section>
+
+  </body>
+</html>
+
+
+
