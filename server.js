@@ -178,23 +178,18 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-
-    const external_url = req.body.external_url;
+    const { external_url, title, description, user_id, subject_name } = req.body;
     let post_id = helper.generateRandomString();
-    const title = req.body.title;
-    const description = req.body.description;
-    const user_id = req.body.user_id;
-    const subject_name = req.body.subject_name;
 
     let resource = {
-      "external_url": external_url,
-      "post_id": post_id,
-      "title": title,
-      "description": description,
-      "user_id": user_id
+      external_url,
+      post_id,
+      title,
+      description,
+      user_id
     };
     let subject = {
-      "subject_name": subject_name
+      subject_name
     };
     insert.insertSource(resource, subject);
     res.end();
@@ -205,10 +200,9 @@ const cacheView = (req, res, next) => {
   // (user cannot like own post)
   app.put('/like', (req, res) => {
 
-    const userid = req.body.user_id;
-    const resourceid = req.body.resource_id;
+    const { user_id, resource_id } = req.body;
 
-    insert.insertLike(userid, resourceid);
+    insert.insertLike(user_id, resource_id);
     res.end();
 
   });
@@ -217,9 +211,7 @@ const cacheView = (req, res, next) => {
   // (user cannot rate own post) 
   app.put('/rate', (req, res) => {
 
-    const userid = req.body.user_id;
-    const resourceid = req.body.resource_id;
-    const rating = req.body.rating;
+    const { user_id, resource_id, rating } = req.body;
 
     insert.insertRating(userid, resourceid, rating);
     res.end();

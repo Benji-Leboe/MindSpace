@@ -41,8 +41,7 @@ function postRegister() {
       url: '/api/users/register',
       method: 'POST',
       data: formData,
-      success: function() {
-        console.log('Form submission successful!');
+      success: function(data) {
         $('#registerDropToggle').dropdown('toggle');
       },
       error: function (req, status, error){
@@ -68,7 +67,8 @@ function postLogin() {
       url: '/api/users/login',
       method: 'POST',
       data: formData,
-      success: function() {
+      success: function(data) {
+        console.log("Login success:", data);
         console.log('Form submission successful!');
         $('#loginDropToggle').dropdown('toggle');
       },

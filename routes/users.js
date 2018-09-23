@@ -37,9 +37,9 @@ module.exports = (knex) => {
 
       }).then((user) => {
         console.log(user);
+        req.session.user_id = user.id;
         knex.insert(user).into('users')
         .returning('*')
-
         .then((rows) => {
           console.log("Insert successful!");
           return rows;
@@ -48,7 +48,8 @@ module.exports = (knex) => {
           res.status(500).send(err);
 
         }).then(() => {
-          res.status(201).send();
+          
+          res.status(201).send(true);
         });
         
       }).catch((err) => {
@@ -80,9 +81,9 @@ module.exports = (knex) => {
           if (match) {
             req.session.user_id = result[0].id;
             console.log(req.session.user_id);
-            res.status(201).send();
+            res.status(201).send(true);
           } else {
-            res.status(401).send();
+            res.status(401).send(false);
           }
         }).catch(err => {
           res.status(500).send(err);
