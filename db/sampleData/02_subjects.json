@@ -1,41 +1,37 @@
-[
+[ {
+    "subject_name": "Technology"
+  },
   {
-    "id": 1,
-    "subject_name": "Precalculus"
+    "subject_name": "Science"
   },
-
   {
-    "id": 2,
-    "subject_name": "Calculus I"
+    "subject_name": "Literature"
   },
-
   {
-    "id": 3,
-    "subject_name": "Calculus II"
+    "subject_name": "Health"
   },
-
   {
-    "id": 4,
-    "subject_name": "Javascript"
+    "subject_name": "Business"
   },
-
   {
-    "id": 5,
-    "subject_name": "Python"
+    "subject_name": "Arts"
   },
-
-    {
-    "id": 6,
-    "subject_name": "BootStrap"
+  {
+    "subject_name": "Culture"
   },
-
-    {
-    "id": 7,
-    "subject_name": "Chemistry 12"
+  {
+    "subject_name": "Education"
   },
-
-    {
-    "id": 8,
-    "subject_name": "Physics 12"
+  {
+    "subject_name": "Engineering"
+  },
+  {
+    "subject_name": "Politics"
+  },
+  {
+    "subject_name": "Psychology"
+  },
+  {
+    "subject_name": "Sports"
   }
 ]

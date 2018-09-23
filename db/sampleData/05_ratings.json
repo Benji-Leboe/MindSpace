@@ -1,36 +1,30 @@
 [
   {
-    "id": 1,
     "stars": 3,
     "resource_id": 3,
     "user_id": "aca5acf0-bdd6-11e8-b0db-d1c4272aee59"
   },
   {
-    "id": 2,
     "stars": 3,
     "resource_id": 2,
     "user_id": "aca5acf0-bdd6-11e8-b0db-d1c4272aee59"
   },
   {
-    "id": 3,
     "stars": 4,
     "resource_id": 3,
     "user_id": "b83210e0-bdd6-11e8-a5ee-1bdebcd39a56"
   },
   {
-    "id": 4,
     "stars": 5,
     "resource_id": 4,
     "user_id": "b83210e0-bdd6-11e8-a5ee-1bdebcd39a56"
   },
   {
-    "id": 5,
     "stars": 2,
     "resource_id": 5,
     "user_id": "be663360-bdd6-11e8-bcba-51b9f4366655"
   },
   {
-    "id": 6,
     "stars": 5,
     "resource_id": 6,
     "user_id": "be663360-bdd6-11e8-bcba-51b9f4366655"
