@@ -101,6 +101,10 @@ div.card .card-img-overlay:hover {
   text-align: center;
 }
 
+#nav-bar #nav-bar-contents #logout {
+  display: none;
+}
+
 #activity-bar {
   background-color: #353535;
   margin-top: 0px;

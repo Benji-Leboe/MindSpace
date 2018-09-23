@@ -4,45 +4,47 @@ require('dotenv').config();
 
 process.title = "mindspace";
 
-const cluster          = require('cluster');
+const cluster              = require('cluster');
 
-const PORT             = process.env.PORT || 8080;
-const ENV              = process.env.ENV || "development";
-const $                = process.env;
+const PORT                 = process.env.PORT || 8080;
+const ENV                  = process.env.ENV || "development";
+const $                    = process.env;
 
-const express          = require("express");
-const bodyParser       = require("body-parser");
-const sass             = require("node-sass-middleware");
-const session          = require('express-session');
+const express              = require("express");
+const bodyParser           = require("body-parser");
+const sass                 = require("node-sass-middleware");
+const session              = require('express-session');
+    
+// memory cache    
+const memjs                = require('memjs');
+const MemcachedStore       = require('connect-memjs')(session);
+const mc                   = memjs.Client
+                             .create(process.env.MEMCACHIER_SERVERS 
+                                || 'localhost:11211', 
+                                {
+                                  failover: false,  // default: false
+                                  timeout: 1,      // default: 0.5 (seconds)
+                                  keepAlive: true  // default: false
+                                });
 
-// memory cache
-const memjs            = require('memjs');
-const MemcachedStore   = require('connect-memjs')(session);
-const mc               = memjs.Client.create(process.env.MEMCACHIER_SERVERS || 'localhost:11211', {
-  failover: false,  // default: false
-  timeout: 1,      // default: 0.5 (seconds)
-  keepAlive: true  // default: false
-});
+// unique userID for user in DB 
+const uuid                 = require('uuid/v1');
 
-// unique userID for user in DB + password hashing/checking
-const uuid             = require('uuid/v1');
-const argon2           = require('argon2');
+const app                  = express();
 
-const app              = express();
-
-const knexConfig       = require("./knexfile");
-const knex             = require("knex")(knexConfig[ENV]);
-const morgan           = require('morgan');
-const knexLogger       = require('knex-logger');
+const knexConfig           = require("./knexfile");
+const knex                 = require("knex")(knexConfig[ENV]);
+const morgan               = require('morgan');
+const knexLogger           = require('knex-logger');
 
 //local imports
-const helper           = require('./helper_functions/helpers');
-const query              = require('./db/db_data_query_functions.js');
-const insert             = require('./db/db_data_insert_functions.js');
+const helper               = require('./helper_functions/helpers');
+const query                = require('./db/db_data_query_functions.js');
+const insert               = require('./db/db_data_insert_functions.js');
 
 
-// Seperated Routes for each Resource
-const usersRoutes      = require("./routes/users");
+// Mount router and user query routes
+const usersRoutes          = require("./routes/users");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -83,15 +85,16 @@ if (cluster.isMaster) {
 } else {
 
 //configure session
+const store = new MemcachedStore({
+  hosts: process.env.MEMCACHIER_SERVERS || 
+         process.env.MEMCACHE_SERVERS || ['localhost:11211']});
+
 app.use(session({
   genid: (req) => {
     return uuid();
   },
   secret: [ $.KEY1, $.KEY2 ],
-  store: new MemcachedStore({
-    hosts: process.env.MEMCACHIER_SERVERS || 
-           process.env.MEMCACHE_SERVERS || ['localhost:11211']
-  }),
+  store, 
   resave: false,
   saveUninitialized: false,
   unset: 'destroy'
@@ -141,9 +144,9 @@ const cacheView = (req, res, next) => {
 
   // view main user page w/ posts and likes
   app.get("/posts/:user_id", cacheView, (req, res) => {
-    const userid = req.params.user_id;
+    const user_id = req.params.user_id;
     console.log(userid);
-    query.findUserResources(userid).then(function(result){
+    query.findUserResources(user_id).then((result) => {
       console.log("let's pass this to html:", result);
     });
     res.send('hello world');
@@ -168,11 +171,13 @@ const cacheView = (req, res, next) => {
 
   // clear user session
   app.post('/logout', (req, res) => {
-    req.session.destroy((err) => {
+    store.destroy(req.session.id, (err) => {
       if (err) throw err;
-
-      store.destroy();
     });
+    req.session.destroy((err) => {
+      if (err) throw err; 
+    });
+    res.status(201).send();
   });
 
   // submit post, add subject tags, assign unique ID and reference user ID
@@ -213,7 +218,7 @@ const cacheView = (req, res, next) => {
 
     const { user_id, resource_id, rating } = req.body;
 
-    insert.insertRating(userid, resourceid, rating);
+    insert.insertRating(user_id, resource_id, rating);
     res.end();
 
   });

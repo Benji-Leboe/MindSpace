@@ -3,6 +3,7 @@ $(function() {
   getUsers();
   postRegister();
   postLogin();
+  postLogout();
   getSubject();
 });
 
@@ -11,8 +12,9 @@ function getUsers() {
   $.ajax({
     method: "GET",
     url: "/api/users"
-  }).done((users) => {
-    users.forEach(user => {
+  })
+  .done( function (users) {
+    users.forEach( function (user) {
       console.log(user);
     })
   });
@@ -21,8 +23,13 @@ function getUsers() {
 function getSubject(){
   $('#subjectGrid').on('click', function(event) {
     event.preventDefault();
-    let currentTarget = $(event.target);
-    console.log($(currentTarget).parent('.card').attr('id'));
+    var currentTarget = $(event.target);
+    var destination = $(currentTarget).parent('.card').attr('id');
+    $.ajax({
+      method: "GET",
+      url: `/subjects/${destination}`
+    })
+
   });
 }
 
@@ -30,7 +37,7 @@ function postRegister() {
   $('#nav-bar').on('submit', '#registerForm', function(event) {
     event.preventDefault();
     console.log('Submit successful')
-    let formData = {
+    var formData = {
       'email': $('input[id=registerFormEmail]').val(),
       'username': $('input[id=registerFormUsername]').val(),
       'password': $('input[id=registerFormPassword]').val(),
@@ -43,6 +50,8 @@ function postRegister() {
       data: formData,
       success: function(data) {
         $('#registerDropToggle').dropdown('toggle');
+        $('#login-register').css('display', 'none');
+        $('#logout').css('display', 'block');
       },
       error: function (req, status, error){
         console.log("Req: " + req);
@@ -53,11 +62,11 @@ function postRegister() {
   });
 }
 
-function postLogin() {
-  $('#nav-bar').on('submit', '#loginForm', function(event) {
+  function postLogin() {
+    $('#nav-bar').on('submit', '#loginForm', function(event) {
     event.preventDefault();
     console.log('Submit successful')
-    let formData = {
+    var formData = {
       'email': $('input[id=loginFormEmail]').val(),
       'password': $('input[id=loginFormPassword]').val()
     };
@@ -70,6 +79,8 @@ function postLogin() {
       success: function(data) {
         console.log("Login success:", data);
         console.log('Form submission successful!');
+        $('#login-register').css('display', 'none');
+        $('#logout').css('display', 'block');
         $('#loginDropToggle').dropdown('toggle');
       },
       error: function (req, status, error){
@@ -79,14 +90,26 @@ function postLogin() {
       }
     });
   });
+
 }
 
-
-
-
-
-
-
-
-
-
+function postLogout() {
+  $('#nav-bar').on('click', '#logoutBtn', function(event) {
+    event.preventDefault();
+    console.log('Logout clicked')
+    $.ajax({
+      url: '/logout',
+      method: 'POST',
+      success: function() {
+        console.log('Logout successful');
+        $('#login-register').css('display', 'block');
+        $('#logout').css('display', 'none');
+      },
+      error: function(req, status, error) {
+        console.log("Req: " + req);
+        console.log("Status: " + status);
+        console.log("Error: " + error);
+      }
+    });
+  });
+}
