@@ -184,8 +184,13 @@ const cacheView = (req, res, next) => {
       }).then((postIdArray) => {
         query.findResources(postIdArray)
           .then((postResults) => {
-            res.status(201);
-            res.render("subject_list", { listPosts: postResults });
+            if (postResults.length < 1) {
+              return res.status(204).redirect('/');
+            } else {
+              console.log(postResults);
+              res.status(200)
+              return res.json(postResults);
+            }
           }).catch((err) => {
             throw err;
           });
@@ -195,7 +200,6 @@ const cacheView = (req, res, next) => {
     }).catch((err) => {
       throw err;
     });
-    res.status(204).redirect('/');
   });
 
   // view post in specific subject 
