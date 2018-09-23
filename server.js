@@ -156,8 +156,11 @@ const cacheView = (req, res, next) => {
   // view posts for specific subject
   app.get("/subjects/:subject_id", cacheView, (req, res) => {
     let subject = req.params.subject_id;
+    console.log(subject);
     //query subject from DB
-
+    query.findSubjects(subject).then((result) => {
+      console.log("Subject query result:", result);
+    })
     res.render("subject_list");
   });
 
