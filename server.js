@@ -156,20 +156,16 @@ const cacheView = (req, res, next) => {
   // view posts for specific subject
   app.get("/subjects/:subject_id", cacheView, (req, res) => {
     let subject = req.params.subject_id;
-    console.log(subject);
     //query subject from DB
     query.findSubjects(subject).then((result) => {
-      console.log("Subject query result:", result);
       let subject_id = result[0]['id'];
       return subject_id;
     }).then((subject_id) => {
       query.findSubjectPosts(subject_id).then((results) => {
-        console.log("Category query result:", results);
         return (async () => {
           try {
             let resultArr = [];
             for (let row of results) {
-              console.log(row);
               resultArr.push(row['resource_id']);
             }
             let promise = resultArr;
@@ -187,7 +183,6 @@ const cacheView = (req, res, next) => {
             if (postResults.length < 1) {
               return res.status(204).redirect('/');
             } else {
-              console.log(postResults);
               res.status(200)
               return res.json(postResults);
             }
