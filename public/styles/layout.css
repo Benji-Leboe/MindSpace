@@ -1,6 +1,7 @@
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 .card-deck {
   margin-bottom: 2em;
 }
@@ -23,7 +24,7 @@ div.card:hover .card-text {
   -moz-user-select: none;
   -ms-user-select: none;
   opacity: 1;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 2rem;
   pointer-events: none;
 }
@@ -51,6 +52,7 @@ div.card .card-img-overlay:hover {
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #side-navbar {
   background: url("../images/nav-bar.jpg");
   min-height: 100%;
@@ -68,14 +70,14 @@ div.card .card-img-overlay:hover {
 }
 
 #side-navbar #side-nav-subjects li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-size: 1.25rem;
   text-align: center;
 }
 
 #side-navbar #side-nav-subjects li a:hover {
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
 }
 
@@ -87,17 +89,22 @@ div.card .card-img-overlay:hover {
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #nav-bar {
   background: url("../images/nav-bar.jpg") no-repeat;
   height: 8rem;
 }
 
 #nav-bar #nav-bar-contents #mindspace-title {
-  color: white;
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: 10px;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 5rem;
+  font-weight: medium;
   text-align: center;
 }
 
@@ -110,6 +117,14 @@ div.card .card-img-overlay:hover {
   color: black;
 }
 
+#nav-bar #nav-bar-contents button.btn.btn-outline-secondary:hover {
+  opacity: 0.7 !important;
+}
+
+#nav-bar #nav-bar-contents .dropdown-menu {
+  opacity: 0.95;
+}
+
 #activity-bar {
   background-color: #353535;
   margin-top: 0px;
@@ -118,22 +133,25 @@ div.card .card-img-overlay:hover {
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #create-post-modal {
-  background-color: #313d4e;
+  opacity: 0.7;
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #view-post-modal {
-  background-color: #313d4e;
+  opacity: 0.7;
 }
 
-.modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -moz-transition: -moz-transform 0.3s ease-out;
-  -o-transition: -o-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+/* Container Styles */
+div#profile-container {
+  background-color: rgba(49, 61, 78, 0.7);
 }
 
 html {
@@ -147,14 +165,18 @@ html {
 }
 
 body {
-  background-color: rgba(26, 26, 26, 0.849) !important;
+  background-color: rgba(0, 0, 0, 0.825) !important;
   font-family: 'Montserrat', sans-serif !important;
   min-height: 100%;
 }
 
+body #subjectGrid .card {
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
+}
+
 footer {
   background: url("../images/nav-bar.jpg");
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .modal-backdrop {

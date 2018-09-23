@@ -1,16 +1,17 @@
 @import 'palette';
 
 #view-post-modal {
-  background-color: $color2;
+  opacity: 0.7;
 }
 
-.modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-     -moz-transition: -moz-transform 0.3s ease-out;
-       -o-transition: -o-transform 0.3s ease-out;
-          transition: transform 0.3s ease-out;
-}
 
-.modal.in .modal-dialog {
+// .modal.fade .modal-dialog {
+//   -webkit-transition: -webkit-transform 0.3s ease-out;
+//      -moz-transition: -moz-transform 0.3s ease-out;
+//        -o-transition: -o-transform 0.3s ease-out;
+//           transition: transform 0.3s ease-out;
+// }
 
-}
+// .modal.in .modal-dialog {
+
+// }

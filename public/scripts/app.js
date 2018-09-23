@@ -6,8 +6,17 @@ $(function() {
   postLogout();
   getSubject();
   fetchPreview();
+  renderUserProfile(user);
 });
 
+var user = {
+  "id": "aca5acf0-bdd6-11e8-b0db-d1c4272aee59",
+  "email": "newton1@gmail.com",
+  "username": "newton111",
+  "password": "123456",
+  "avatar": "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/5.png",
+  "bio": "I'm a bio for Newton111."
+};
 
 function getUsers() {
   $.ajax({
@@ -157,3 +166,22 @@ function postLogout() {
     });
   });
 }
+
+function renderUserProfile(profile) {
+  $('.user-profile').append(createUserProfile(profile));
+};
+
+
+function createUserProfile(profile) {
+  var { username, avatar, bio } = profile;
+
+  let $profile = $('<div>').addClass('users container-fluid rounded').attr('id', 'profile-container');
+  let $avatar = $('<img>').addClass('avatar col-sm mt-5 rounded-circle').attr('src', avatar);
+  let $row = $('<span>').addClass('row justify-content-center');
+  let $name = $('<h2>').addClass('name mt-3 text-white').text(username);
+  let $bio = $('<p>').addClass('bio text-white').text(bio);
+  
+  $profile.append($avatar, $row);
+  $row.append($name, $bio)
+  return $profile;
+};
