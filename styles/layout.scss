@@ -16,9 +16,14 @@ html {
 
 
 body {
-  background-color: rgba(26, 26, 26, 0.849) !important;
+  background-color: rgba(0, 0, 0, 0.825) !important;
   font-family: 'Montserrat', sans-serif !important;
   min-height: 100%;
+
+  #subjectGrid .card {
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
+  }
+
 }
 
 footer {
