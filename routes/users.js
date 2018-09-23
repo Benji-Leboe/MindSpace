@@ -1,10 +1,9 @@
 "use strict";
 
-const express = require('express');
-const router  = express.Router();
-const uuid    = require('uuid/v1');
-const argon2  = require('argon2');
-const helper  = require('../helper_functions/helpers');
+const express  = require('express');
+const router   = express.Router();
+const uuid     = require('uuid/v1');
+const helper   = require('../helper_functions/helpers');
 
 module.exports = (knex) => {
 
@@ -90,6 +89,8 @@ module.exports = (knex) => {
         });
       });
     }
-  })
+  });
+
+
   return router;
 }

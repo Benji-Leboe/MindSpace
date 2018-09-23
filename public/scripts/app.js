@@ -3,6 +3,7 @@ $(function() {
   getUsers();
   postRegister();
   postLogin();
+  postLogout();
   getSubject();
 });
 
@@ -92,12 +93,17 @@ function postLogout() {
     event.preventDefault();
     console.log('Logout clicked')
     $.ajax({
-      url: '/api/users/logout',
+      url: '/logout',
       method: 'POST',
       success: function() {
         console.log('Logout successful');
         $('#login-register').css('display', 'block');
         $('#logout').css('display', 'none');
+      },
+      error: function(req, status, error) {
+        console.log("Req: " + req);
+        console.log("Status: " + status);
+        console.log("Error: " + error);
       }
     });
   });
