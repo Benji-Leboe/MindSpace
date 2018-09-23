@@ -48,7 +48,7 @@ module.exports = (knex) => {
           res.status(500).send(err);
 
         }).then(() => {
-          knex.destroy();
+          // knex.destroy();
           res.status(201).send();
         });
         
