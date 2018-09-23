@@ -30,9 +30,10 @@ exports.up = function(knex, Promise) {
       table.uuid('user_id').unsigned().references('id').inTable('users');
     }).createTable('subjects', function(table) {
       console.log("Subjects table created");
-      table.increments('id');
-      table.string('subject_name').notNullable().unique();
-    }).createTable('likes', function(table){
+			table.increments('id');
+      table.string('subject_name').notNullable();
+      
+		}).createTable('likes', function(table){
       console.log("Likes table created");
       table.increments('id');
       table.integer('resource_id').unsigned().references('id').inTable( 'resources' );
