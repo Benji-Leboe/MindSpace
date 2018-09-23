@@ -139,7 +139,13 @@ const cacheView = (req, res, next) => {
 
   // view main user page w/ posts and likes
   app.get("/posts/:user_id", cacheView, (req, res) => {
-    res.render("user_posts");
+    const userid = req.params.user_id;
+    console.log(userid);
+    query.findUserResources(userid).then(function(result){
+      console.log("let's pass this to html:", result);
+    });
+    res.send('hello world');
+    //res.render("user_posts");
   });
 
   // view posts for specific subject

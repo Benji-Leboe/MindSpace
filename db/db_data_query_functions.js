@@ -20,12 +20,12 @@ module.exports = {
     		});
   },
 
-  findUserResources: function(email){
+  findUserResources: function(userid){
     return knex.select('*').from('users')
     		.leftJoin('resources', 'users.id', 'resources.user_id')
     		.leftJoin('categories', 'resources.id', 'categories.resource_id')
     		.rightJoin('subjects', 'subjects.id', 'categories.subject_id')
-    		.where('email', '=', email)
+    		.where('id', '=', userid)
     		.asCallback(function(err, rows){
     			if (err) return err;
     			return rows;
