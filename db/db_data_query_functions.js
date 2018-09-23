@@ -18,9 +18,31 @@ module.exports = {
       });    
     },
 
-  findUser: function(email){
+  findSubjectPosts: (subject_id) => {
+    return knex.select('*').from('categories')
+      .where('subject_id', '=', subject_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findUser: (email) => {
     return knex.select('*').from('users')
       .where('email', '=', email)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findResources: (resource_ids) => {
+    return knex.select('*').from('resources')
+    .whereIn('id', resource_ids)
       .returning('*')
       .then((rows) => {
         return rows;

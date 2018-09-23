@@ -160,8 +160,42 @@ const cacheView = (req, res, next) => {
     //query subject from DB
     query.findSubjects(subject).then((result) => {
       console.log("Subject query result:", result);
-    })
-    res.render("subject_list");
+      let subject_id = result[0]['id'];
+      return subject_id;
+    }).then((subject_id) => {
+      query.findSubjectPosts(subject_id).then((results) => {
+        console.log("Category query result:", results);
+        return (async () => {
+          try {
+            let resultArr = [];
+            for (let row of results) {
+              console.log(row);
+              resultArr.push(row['resource_id']);
+            }
+            let promise = resultArr;
+            let value = await promise;
+            return value;
+          } catch (err) {
+            throw err;
+          }
+        })();
+      }).catch((err) => {
+        throw err;
+      }).then((postIdArray) => {
+        query.findResources(postIdArray)
+          .then((postResults) => {
+            res.status(201);
+            res.render("subject_list", { listPosts: postResults });
+          }).catch((err) => {
+            throw err;
+          });
+      }).catch((err) => {
+        throw err;
+      });
+    }).catch((err) => {
+      throw err;
+    });
+    res.status(204).redirect('/');
   });
 
   // view post in specific subject 
@@ -180,7 +214,7 @@ const cacheView = (req, res, next) => {
     req.session.destroy((err) => {
       if (err) throw err; 
     });
-    res.status(201).send();
+    res.status(200).send();
   });
 
   // submit post, add subject tags, assign unique ID and reference user ID
@@ -200,7 +234,7 @@ const cacheView = (req, res, next) => {
       subject_name
     };
     insert.insertSource(resource, subject);
-    res.end();
+    res.status(201).send();
 
   });
 
@@ -211,7 +245,7 @@ const cacheView = (req, res, next) => {
     const { user_id, resource_id } = req.body;
 
     insert.insertLike(user_id, resource_id);
-    res.end();
+    res.status(201).send();
 
   });
 
@@ -222,7 +256,7 @@ const cacheView = (req, res, next) => {
     const { user_id, resource_id, rating } = req.body;
 
     insert.insertRating(user_id, resource_id, rating);
-    res.end();
+    res.status(201).send();
 
   });
 
@@ -234,7 +268,7 @@ const cacheView = (req, res, next) => {
     const comment = req.body.comment;
 
     insert.insertComment(userid, resourceid, comment);
-    res.end();
+    res.status(201).send();
 
   });
 
