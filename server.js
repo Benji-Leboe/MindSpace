@@ -2,6 +2,8 @@
 
 require('dotenv').config();
 
+process.title = "mindspace";
+
 const cluster          = require('cluster');
 
 const PORT             = process.env.PORT || 8080;
@@ -72,7 +74,7 @@ if (cluster.isMaster) {
 
   cluster.on('exit', (worker) => {
 
-    console.log('Worker %d died:', worker.id);
+    console.log('Worker %d died:', worker.id, "in process", process.pid);
     cluster.fork();
 
   });

@@ -59,8 +59,37 @@ module.exports = (knex) => {
   });
 
   router.post("/login", (req, res) => {
-    let { username, password } = req.body;
-  })
 
+    if (!req.body.email || req.body.username) {
+      res.status(401).send();
+    } else {
+      let { email, password } = req.body;
+      console.log("Request password:", password);
+
+      return knex.select('*').from('users')
+      .where('email', '=', email)
+      .then((rows) => {
+        console.log("Query successful!");
+        return rows;
+      }).catch((err) => {
+        res.status(500).send(err);
+      }).then((result) => {
+        console.log('Result:', result, 'Password:', result[0].password);
+        helper.hashCheck(result[0].password, password)
+        .then((match) => {
+          console.log(match);
+          if (match) {
+            req.session.user_id = result[0].id;
+            console.log(req.session.user_id);
+            res.status(201).send();
+          } else {
+            res.status(401).send();
+          }
+        }).catch(err => {
+          res.status(500).send(err);
+        });
+      });
+    }
+  })
   return router;
 }

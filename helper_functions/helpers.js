@@ -14,7 +14,7 @@ module.exports = {
   },
   //compare input password to DB hash
   hashCheck: (hash, password) => {
-    argon2.verify(hash, password);
+    return argon2.verify(hash, password);
   },
   //check for min length
   isMinLength: (input, length) => {
