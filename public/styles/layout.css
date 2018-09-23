@@ -23,7 +23,7 @@ div.card:hover .card-text {
   -moz-user-select: none;
   -ms-user-select: none;
   opacity: 1;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 2rem;
   pointer-events: none;
 }
@@ -68,14 +68,14 @@ div.card .card-img-overlay:hover {
 }
 
 #side-navbar #side-nav-subjects li a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-size: 1.25rem;
   text-align: center;
 }
 
 #side-navbar #side-nav-subjects li a:hover {
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
 }
 
@@ -96,8 +96,11 @@ div.card .card-img-overlay:hover {
 }
 
 #nav-bar #nav-bar-contents #mindspace-title {
-  color: white;
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: 10px;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 5rem;
+  font-weight: medium;
   text-align: center;
 }
 
@@ -119,7 +122,7 @@ div.card .card-img-overlay:hover {
 /* RGB */
 /* Font */
 #create-post-modal {
-  background-color: #313d4e;
+  background-color: rgba(220, 220, 240, 0.6);
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
@@ -154,14 +157,18 @@ html {
 }
 
 body {
-  background-color: rgba(26, 26, 26, 0.849) !important;
+  background-color: rgba(0, 0, 0, 0.825) !important;
   font-family: 'Montserrat', sans-serif !important;
   min-height: 100%;
 }
 
+body #subjectGrid .card {
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
+}
+
 footer {
   background: url("../images/nav-bar.jpg");
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .modal-backdrop {
