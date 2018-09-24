@@ -40,9 +40,9 @@ module.exports = {
       });
     },
 
-  findResources: (resource_ids) => {
+  findResources: (post_id) => {
     return knex.select('*').from('resources')
-    .whereIn('id', resource_ids)
+    .whereIn('post_id', post_id)
       .returning('*')
       .then((rows) => {
         return rows;
@@ -53,10 +53,8 @@ module.exports = {
 
   findUserResources: function(user_id){
     return knex.select('*').from('users')
-    	.leftJoin('resources', 'users.id', 'resources.user_id')
-    	.leftJoin('categories', 'resources.id', 'categories.resource_id')
-    	.rightJoin('subjects', 'subjects.id', 'categories.subject_id')
-    	.where('id', '=', user_id)
+    	.leftJoin('resources', 'users.id', 'resources.user_created')
+    	.where('user_created', '=', user_id)
       .returning('*')
       .then((rows) => {
         return rows;
@@ -66,12 +64,11 @@ module.exports = {
     },
 
   findUserLikedResources: function(user_id){
-    return knex.select('*').from('users')
-      .leftJoin('likes', 'users.id', 'likes.user_id')
-      .rightJoin('resources', 'resources.id', 'likes.resource_id')
-      .leftJoin('categories', 'resources.id', 'categories.resource_id')
-      .rightJoin('subjects', 'subjects.id', 'categories.subject_id')
-      .where('id', '=', user_id)
+    return knex.select('*')
+      .from('users')
+      .innerJoin('likes', 'users.id', 'likes.user_id')
+      .where({ user_id: user_id })
+      .rightJoin('resources', 'resources.post_id', 'likes.post_id')
       .returning('*')
       .then((rows) => {
         return rows;
@@ -83,8 +80,8 @@ module.exports = {
   findResourceRating: function(user_id){
     return knex.select('*').from('users')
       .leftJoin('ratings', 'users.id', 'ratings.user_id')
-      .rightJoin('resources', 'resources.id', 'ratings.resource_id')
-      .where('id', '=', user_id)
+      .rightJoin('resources', 'resources.post_id', 'ratings.post_id')
+      .where({ user_id: user_id })
       .returning('*')
       .then((rows) => {
         return rows;
@@ -96,8 +93,8 @@ module.exports = {
   findResourceComments: function(user_id){
     return knex.select('*').from('users')
       .leftJoin('comments', 'users.id', 'comments.user_id')
-      .rightJoin('resources', 'resources.id', 'comments.resource_id')
-      .where('id', '=', user_id)
+      .rightJoin('resources', 'resources.post_id', 'comments.post_id')
+      .where({ user_id: user_id })
       .returning('*')
       .then((rows) => {
         return rows;

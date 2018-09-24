@@ -1,51 +1,36 @@
 [
   {
-    "resource_id": 1,
+    "post_id": "s7ehj2w1",
     "subject_id": 1
   },
 
   {
-    "resource_id": 1,
+    "post_id": "s7ehj2w2",
     "subject_id": 2
   },
 
   {
-    "resource_id": 2,
+    "post_id": "s7ehj2w3",
     "subject_id": 2
   },
 
   {
-    "resource_id": 2,
+    "post_id": "s7ehj2w4",
     "subject_id": 6
   },
 
   {
-    "resource_id": 3,
+    "post_id": "s7ehj2w5",
     "subject_id": 2
   },
 
   {
-    "resource_id": 4,
+    "post_id": "s7ehj2w6",
     "subject_id": 6
   },
 
   {
-    "resource_id": 5,
+    "post_id": "s7ehj2w7",
     "subject_id": 2
-  },
-
-  {
-    "resource_id": 6,
-    "subject_id": 6
-  },
-
-  {
-    "resource_id": 7,
-    "subject_id": 2
-  },
-
-  {
-    "resource_id": 7,
-    "subject_id": 6
   }
 ]
