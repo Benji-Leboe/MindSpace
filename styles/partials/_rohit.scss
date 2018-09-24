@@ -5,6 +5,22 @@
 }
 
 
+
+#stars-container span { 
+  font-size: 24px; 
+}
+
+#stars-container span::before { 
+  content: "🌚"; 
+}
+
+#stars-container span.active::before {
+  content: "🌝"; 
+}
+
+
+
+
 // .modal.fade .modal-dialog {
 //   -webkit-transition: -webkit-transform 0.3s ease-out;
 //      -moz-transition: -moz-transform 0.3s ease-out;

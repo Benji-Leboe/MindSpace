@@ -130,6 +130,7 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
+  // test templates
   app.get("/ardelia", cacheView, (req, res) => {
     res.render("test_templates");
   });
@@ -137,6 +138,18 @@ const cacheView = (req, res, next) => {
   app.get("/rohit", cacheView, (req, res) => {
     res.render("rohit");
   });
+
+  app.get("/edit-profile", cacheView, (req, res) => {
+    res.render("edit-profile");
+  });
+
+  app.get("/view-profile", cacheView, (req, res) => {
+    res.render("view-profile");
+  });
+
+
+
+
 
   // view profile- bio etc.
   app.get("/profile/:email", cacheView, (req, res) => {
