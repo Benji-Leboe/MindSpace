@@ -10,7 +10,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "local": "nodemon --ignore public/",
     "port": "sudo netstat -ntlp | grep :8080",
     "kill": "kill -9",
     "knex": "knex"
@@ -48,12 +47,10 @@
     "pg": "7.4.3",
     "popper.js": "1.14.4",
     "simple-get": "3.0.3",
-    "unirest": "0.5.1",
     "uuid": "3.3.2"
   },
   "devDependencies": {
     "autoprefixer": "9.1.5",
-    "nodemon": "1.18.4",
     "postcss-cli": "6.0.0",
     "request": "2.88.0",
     "sqlite3": "4.0.2"

@@ -16,16 +16,16 @@ const sass                 = require("node-sass-middleware");
 const session              = require('express-session');
     
 // memory cache    
-const memjs                = require('memjs');
-const MemcachedStore       = require('connect-memjs')(session);
-const mc                   = memjs.Client
-                             .create(process.env.MEMCACHIER_SERVERS 
-                                || 'localhost:11211', 
-                                {
-                                  failover: false,  // default: false
-                                  timeout: 1,      // default: 0.5 (seconds)
-                                  keepAlive: true  // default: false
-                                });
+// const memjs                = require('memjs');
+// const MemcachedStore       = require('connect-memjs')(session);
+// const mc                   = memjs.Client
+//                              .create(process.env.MEMCACHIER_SERVERS 
+//                                 || 'localhost:11211', 
+//                                 {
+//                                   failover: false,  // default: false
+//                                   timeout: 1,      // default: 0.5 (seconds)
+//                                   keepAlive: true  // default: false
+//                                 });
 
 // unique userID for user in DB 
 const uuid                 = require('uuid/v1');
@@ -41,8 +41,7 @@ const knexLogger           = require('knex-logger');
 const helper               = require('./helper_functions/helpers');
 const query                = require('./db/db_data_query_functions.js');
 const insert               = require('./db/db_data_insert_functions.js');
-const get                  = require('simple-get');
-const request              = require('request');
+
 
 
 // Mount router and user query routes
@@ -70,33 +69,71 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
+
+  cluster.setupMaster({
+    args: ['--use', 'http']
+  });
 
   const WORKERS = process.env.WEB_CONCURRENCY || 1;
 
   for (let i = 0; i < WORKERS; i++) {
-    cluster.fork();
+   let worker = cluster.fork().on('listening', (address) => {
+      { address.address, address.port }
+    });
+    worker.on('exit', (code, signal) => {
+      if (signal) {
+        console.log(`Worker was killed by signal: ${signal}`);
+      } else if (code !== 0) {
+        console.log(`Worker exited on error code: ${code}`);
+      } else {
+        console.log('Worker success!');
+      }
+    });
   }
 
+  cluster.on('online', function(worker) {
+    console.log('A worker with #' + worker.id);
+  });
+  cluster.on('listening', function(worker, address) {
+    console.log(`A worker is now connected to ${address.address}, ${address.port}`);
+  });
   cluster.on('exit', (worker) => {
-
-    console.log('Worker %d died:', worker.id, "in process", process.pid);
-    cluster.fork();
-
+    var maxWorkerCrashes = 10;
+      cluster.on('exit', function(worker, code, signal) {
+        console.log('Worker %d died:', worker.id, "in process", process.pid);
+        if (worker.suicide !== true) {
+            maxWorkerCrashes--;
+            if (maxWorkerCrashes <= 0) {
+              console.error('Too many worker crashes');
+              // kill the cluster, let supervisor restart it
+              process.exit(1);
+            } else {
+              worker.on('listening', (address) => {
+                { address.address, address.port }
+              });
+            }
+          }
+      });
   });
 
 } else {
 
+  app.listen(PORT, () => {
+    console.log("Example app listening on port " + PORT);
+  });
+  console.log("Bound to PORT:", PORT);
 //configure session
-const store = new MemcachedStore({
-  hosts: process.env.MEMCACHIER_SERVERS || 
-         process.env.MEMCACHE_SERVERS || ['localhost:11211']});
+// const store = new MemcachedStore({
+//   hosts: process.env.MEMCACHIER_SERVERS || 
+//          process.env.MEMCACHE_SERVERS || ['localhost:11211']});
 
 app.use(session({
   genid: (req) => {
     return uuid();
   },
   secret: [ $.KEY1, $.KEY2 ],
-  store, 
+  // store, 
   resave: false,
   saveUninitialized: false,
   unset: 'destroy'
@@ -126,19 +163,7 @@ const cacheView = (req, res, next) => {
   
   // Mount all resource routes
   app.use("/api/users", usersRoutes(knex));
-
-  app.get("/getJSON/:url", (req, res) => {
-    if(!req.params.url) {
-      res.status(500);
-      res.send({"Error": "Wrong url, bitch"});
-    }
-    request.get({ url: `http://api.linkpreview.net/?key=AIzaSyDozAdVk-H_5_JuiAzAUa275tToyJrosk0&q=${req.params.url}`,
-    function(error, response, body) { 
-      if (!error && response.statusCode == 200) { 
-        res.json(body); 
-      } 
-    }
-  })  
+ 
 
   // Home page - list of subjects in grid format
   app.get("/", cacheView, (req, res) => {
@@ -309,8 +334,18 @@ const cacheView = (req, res, next) => {
 
   });
 
-})}
-console.log(process.env.PORT);
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
+}
+
+// app.get("/getJSON/:url", (req, res) => {
+//   if(!req.params.url) {
+//     res.status(500);
+//     res.send({"Error": "Wrong url, bitch"});
+//   }
+//   request.get({ url: `http://api.linkpreview.net/?key=AIzaSyDozAdVk-H_5_JuiAzAUa275tToyJrosk0&q=${req.params.url}`,
+//   function(error, response, body) { 
+//     if (!error && response.statusCode == 200) { 
+//       res.json(body); 
+//     } 
+//   }
+// }) 
+
