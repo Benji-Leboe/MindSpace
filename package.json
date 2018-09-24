@@ -1,5 +1,5 @@
 {
-  "name": "mindspace",
+  "name": "y",
   "version": "1.0.0",
   "description": "MindSpace project with Adelia Tay and Yang Yu for week 5 project @ LHL",
   "main": "server.js",
@@ -10,10 +10,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "local": "./node_modules/.bin/nodemon --ignore public/",
+    "local": "nodemon --ignore public/",
     "port": "sudo netstat -ntlp | grep :8080",
-    "kill": "kill",
-    "knex": "./node_modules/.bin/knex"
+    "kill": "kill -9",
+    "knex": "knex"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "css-star-rating": "^1.2.4",
     "dotenv": "6.0.0",
     "ejs": "2.6.1",
+    "eslint-plugin-node": "~7.0.1",
     "express": "4.16.3",
     "express-session": "^1.15.6",
     "heroku": "7.16.0",
@@ -46,12 +47,15 @@
     "node-sass-middleware": "0.11.0",
     "pg": "7.4.3",
     "popper.js": "1.14.4",
+    "simple-get": "3.0.3",
+    "unirest": "0.5.1",
     "uuid": "3.3.2"
   },
   "devDependencies": {
     "autoprefixer": "9.1.5",
     "nodemon": "1.18.4",
     "postcss-cli": "6.0.0",
+    "request": "2.88.0",
     "sqlite3": "4.0.2"
   },
   "bugs": {

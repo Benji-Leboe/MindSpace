@@ -41,6 +41,8 @@ const knexLogger           = require('knex-logger');
 const helper               = require('./helper_functions/helpers');
 const query                = require('./db/db_data_query_functions.js');
 const insert               = require('./db/db_data_insert_functions.js');
+const get                  = require('simple-get');
+const request              = require('request');
 
 
 // Mount router and user query routes
@@ -121,15 +123,28 @@ const cacheView = (req, res, next) => {
 
   /* APP GET ROUTES */
 
+  
   // Mount all resource routes
   app.use("/api/users", usersRoutes(knex));
+
+  app.get("/getJSON/:url", (req, res) => {
+    if(!req.params.url) {
+      res.status(500);
+      res.send({"Error": "Wrong url, bitch"});
+    }
+    request.get({ url: `http://api.linkpreview.net/?key=AIzaSyDozAdVk-H_5_JuiAzAUa275tToyJrosk0&q=${req.params.url}`,
+    function(error, response, body) { 
+      if (!error && response.statusCode == 200) { 
+        res.json(body); 
+      } 
+    }
+  })  
 
   // Home page - list of subjects in grid format
   app.get("/", cacheView, (req, res) => {
     res.render("index");
   });
 
-  // Search API key: AIzaSyDozAdVk-H_5_JuiAzAUa275tToyJrosk0
   app.get("/search", (req, res) => {
 
   });
@@ -172,7 +187,7 @@ const cacheView = (req, res, next) => {
           try {
             let resultArr = [];
             for (let row of results) {
-              resultArr.push(row['resource_id']);
+              resultArr.push(row['post_id']);
             }
             let promise = resultArr;
             let value = await promise;
@@ -189,7 +204,6 @@ const cacheView = (req, res, next) => {
             if (postResults.length < 1) {
               return res.status(204).redirect('/');
             } else {
-              console.log(postResults);
               res.status(200)
               return res.json(postResults);
             }
@@ -295,8 +309,8 @@ const cacheView = (req, res, next) => {
 
   });
 
-  app.listen(PORT, () => {
-    console.log("Example app listening on port " + PORT);
-  });
-
-}
+})}
+console.log(process.env.PORT);
+app.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+});

@@ -20,15 +20,24 @@ function getUsers() {
   });
 };
 
+function getLinkPreview () {
+  $.getJSON(`/getJSON/${url}`, function(data) {
+    var JSON = {};
+    $.each( data, function( key, val ) {
+      
+    })
+  });
+}
 
-async function getSubjectList() {
 
-  async function fetchPreview(url) {
-    console.log('function called');
-    let data = await $.getJSON(
-      `https://api.linkpreview.net?key=5ba7bba9b092023678bec1cebcf7cab6ea56b2ec203cf&q=${url}`);
-    return await data;
-  };
+function getSubjectList() {
+
+  // async function fetchPreview(url) {
+  //   console.log('function called');
+  //   let data = await $.getJSON(
+  //     `https://api.linkpreview.net?key=5ba7bba9b092023678bec1cebcf7cab6ea56b2ec203cf&q=${url}`);
+  //   return await data;
+  // };
 
   function destruct(resJSON) {
     console.log(resJSON);
@@ -36,8 +45,8 @@ async function getSubjectList() {
   
   }
 
-  $(document).ready(function() {
-    $('#subjectGrid, a.subject-link').on('click', function(event) {
+  $(document).ready(function () {
+    $('#subjectGrid, a.subject-link').on('click', function (event) {
       event.preventDefault();
       var currentTarget = $(event.target);
       console.log(currentTarget);
@@ -46,7 +55,7 @@ async function getSubjectList() {
       $.ajax({
         method: "GET",
         url: `/subjects/${destination}`
-        }).done( async function(data) {
+        }).done(async function (data) {
           console.log("AJAX get data:", data);
           let jsonArr = [];
           for (let post of data) {
@@ -79,7 +88,7 @@ function postRegister() {
       url: '/api/users/register',
       method: 'POST',
       data: formData,
-      success: function(data) {
+      success: function (data) {
         $('#registerDropToggle').dropdown('toggle');
         $('#login-register').css('display', 'none');
         $('#logout').css('display', 'block');
@@ -94,7 +103,7 @@ function postRegister() {
 }
 
   function postLogin() {
-    $('#nav-bar').on('submit', '#loginForm', function(event) {
+    $('#nav-bar').on('submit', '#loginForm', function (event) {
     event.preventDefault();
     console.log('Submit successful')
     var formData = {
@@ -107,7 +116,7 @@ function postRegister() {
       url: '/api/users/login',
       method: 'POST',
       data: formData,
-      success: function(data) {
+      success: function (data) {
         console.log("Login success:", data);
         console.log('Form submission successful!');
         $('#login-register').css('display', 'none');
