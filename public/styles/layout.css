@@ -1,6 +1,8 @@
+@charset "UTF-8";
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 .card-deck {
   margin-bottom: 2em;
 }
@@ -23,7 +25,11 @@ div.card:hover .card-text {
   -moz-user-select: none;
   -ms-user-select: none;
   opacity: 1;
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.651);
+=======
+  color: rgba(255, 255, 255, 0.6);
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
   font-size: 2rem;
   pointer-events: none;
 }
@@ -51,6 +57,7 @@ div.card .card-img-overlay:hover {
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #side-navbar {
   background: url("../images/nav-bar.jpg");
   min-height: 100%;
@@ -68,15 +75,24 @@ div.card .card-img-overlay:hover {
 }
 
 #side-navbar #side-nav-subjects li a {
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.651);
+=======
+  color: rgba(255, 255, 255, 0.9);
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
   text-decoration: none;
   font-size: 1.25rem;
   text-align: center;
 }
 
 #side-navbar #side-nav-subjects li a:hover {
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.9);
   transition: all 0.5s ease;
+=======
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
 }
 
 #side-navbar #side-nav-subjects .list-group-item {
@@ -87,28 +103,40 @@ div.card .card-img-overlay:hover {
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #nav-bar {
   background: url("../images/nav-bar.jpg") no-repeat;
   height: 8rem;
 }
 
+#nav-bar #nav-bar-contents {
+  position: relative;
+  display: flex;
+}
+
 #nav-bar #nav-bar-contents #mindspace-title {
   font-family: 'Montserrat', sans-serif !important;
   letter-spacing: 10px;
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.651);
+=======
+  color: rgba(255, 255, 255, 0.6);
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
   font-size: 5rem;
   font-weight: medium;
   text-align: center;
 }
 
-#nav-bar #nav-bar-contents #logout {
+#nav-bar #nav-bar-contents #logoutProfile {
   display: none;
 }
 
 #nav-bar #nav-bar-contents #navSearch input {
+  max-width: 10rem;
   background-color: rgba(220, 220, 240, 0.6);
   color: black;
   max-width: 12rem;
@@ -133,30 +161,64 @@ div.card .card-img-overlay:hover {
   opacity: 0.95;
 }
 
+#nav-bar #nav-bar-contents button.btn.btn-outline-secondary:hover {
+  opacity: 0.7 !important;
+}
+
+#nav-bar #nav-bar-contents .dropdown-menu {
+  opacity: 0.95;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+/* Container Styles */
 #activity-bar {
-  background-color: #353535;
-  margin-top: 0px;
+  background: url("../images/nav-bar.jpg");
+  min-height: 100%;
+  width: 15vw;
+}
+
+@media (max-width: 1200px) {
+  #activity-bar {
+    width: calc(15vw - .4vw);
+  }
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #create-post-modal {
-  background-color: #313d4e;
+  opacity: 0.7;
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
+/* Container Styles */
 #view-post-modal {
-  background-color: #313d4e;
+  opacity: 0.7;
 }
 
-.modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -moz-transition: -moz-transform 0.3s ease-out;
-  -o-transition: -o-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
+#stars-container span {
+  font-size: 24px;
+}
+
+#stars-container span::before {
+  content: "🌚";
+}
+
+#stars-container span.active::before {
+  content: "🌝";
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+/* Container Styles */
+div#profile-container {
+  background-color: rgba(49, 61, 78, 0.7);
 }
 
 html {
@@ -181,7 +243,11 @@ body #subjectGrid .card {
 
 footer {
   background: url("../images/nav-bar.jpg");
+<<<<<<< HEAD
   color: rgba(255, 255, 255, 0.651);
+=======
+  color: rgba(255, 255, 255, 0.6);
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
 }
 
 .modal-backdrop {

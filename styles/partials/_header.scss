@@ -6,6 +6,8 @@
   height: 8rem;
 
   #nav-bar-contents {
+    position: relative;
+    display: flex;
 
     #mindspace-title {
       font-family: 'Montserrat', sans-serif !important;
@@ -16,11 +18,12 @@
       text-align: center;
     }
 
-    #logout {
+    #logoutProfile {
       display: none;
     }
 
     #navSearch input {
+      max-width: 10rem;
       background-color: rgba(220, 220, 240, 0.6);
       color: rgba(0, 0, 0, 1);
       max-width: 12rem;

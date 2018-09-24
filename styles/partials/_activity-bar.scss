@@ -1,4 +1,10 @@
+@import 'palette';
+
 #activity-bar {
-  background-color: rgb(53, 53, 53);
-  margin-top: 0px;
+  background: url("../images/nav-bar.jpg");
+  min-height: 100%;
+  width: 15vw;
+  @media (max-width: 1200px) {
+    width: calc(15vw - .4vw);
+  }
 }

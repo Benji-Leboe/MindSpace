@@ -22,17 +22,17 @@ module.exports = {
 	insertSource: function(resource, subject){
 	//insert resource and resource subject into database
 		knex("resources")
-		.returning("id")
-		.as("resource_id")
+		.returning("post_id")
+		.as("post_id")
 		.insert(resource)
-		.then(([resource_id]) => {
+		.then(([post_id]) => {
 			knex("subjects")
 			.returning("id")
 			.as("subject_id")
 			.insert(subject)
 			.then(([subject_id]) => {
 				knex("categories")
-				.insert({resource_id: resource_id, subject_id: subject_id})
+				.insert({post_id: post_id, subject_id: subject_id})
 				.finally(function() {
 					knex.destroy();
 				});
@@ -40,10 +40,10 @@ module.exports = {
 		})
 	},
 
-	insertLike: function(userid, resourceid){
+	insertLike: function(userid, postid){
 	//insert current user liked resource
-		let userid_resourceid = {user_id: userid, resource_id: resourceid};
-		knex.insert(userid_resourceid).into('likes')
+		let userid_postid = {user_id: userid, post_id: postid};
+		knex.insert(userid_postid).into('likes')
 		.asCallback(function(err, rows){
 	  	if (err) return err;
 		return rows;
@@ -53,10 +53,10 @@ module.exports = {
 		});
 	},
 
-	insertRating: function(userid, resourceid, rating){
+	insertRating: function(userid, postid, rating){
 	//insert current user rating to resource
-		let userid_resourceid_rating = {user_id: userid, resource_id: resourceid, stars: rating};
-		knex.insert(userid_resourceid_rating).into('ratings')
+		let userid_postid_rating = {user_id: userid, post_id: postid, stars: rating};
+		knex.insert(userid_postid_rating).into('ratings')
 		.asCallback(function(err, rows){
 	  	if (err) return err;
 		return rows;
@@ -66,10 +66,10 @@ module.exports = {
 		});
 	},
 
-	insertComment: function(userid, resourceid, comment){
+	insertComment: function(userid, postid, comment){
 	//insert current user comment to resource
-		let userid_resourceid_comment = {user_id: userid, resource_id: resourceid, content: comment};
-		knex.insert(userid_resourceid_comment).into('comments')
+		let userid_postid_comment = {user_id: userid, post_id: postid, content: comment};
+		knex.insert(userid_postid_comment).into('comments')
 		.asCallback(function(err, rows){
 	  	if (err) return err;
 		return rows;

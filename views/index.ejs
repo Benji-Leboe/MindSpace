@@ -2,13 +2,17 @@
 <html lang="en">
 
   <head>
-    <%- include partials/_head %>
+    <%- include ./partials/_head %>
   </head>
 
   <body class="container-fluid pl-0 pr-0">
 
     <header class="container-fluid pl-0 pr-0">
+<<<<<<< HEAD
       <%- include partials/_header %>
+=======
+      <%- include ./partials/_header %>
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
     </header>
 
     <div class="container-fluid">
@@ -16,7 +20,11 @@
       <main class="row">
 
         <div class="side-nav col-2 pl-0 mb-0">
+<<<<<<< HEAD
           <%- include partials/_side-nav %>
+=======
+          <%- include ./partials/_side-nav %>
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
         </div>
 
         <div id="subjectGrid" class="col-8">
@@ -127,18 +135,20 @@
           </div>
         
         </div>
+        </div>
 
-      </main>
+        <div id="activity-bar" class="col-2 pr-0 mb-0">
+          <%- include ./partials/_activity-bar %>
+        </div>
+      
+        </main>
 
-      <aside>
-        <%- include partials/_activity-bar %>
-      </aside>
 
     </div>
 
     <footer class="align-items-end mt-0">
 
-      <%- include partials/_footer %>
+      <%- include ./partials/_footer %>
     </footer>
 
   </body>

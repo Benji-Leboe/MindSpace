@@ -40,6 +40,7 @@ module.exports = {
 			});
 	},
 
+<<<<<<< HEAD
 	findResources: (resource_ids) => {
 		return knex.select('*').from('resources')
 			.whereIn('id', resource_ids)
@@ -105,3 +106,69 @@ module.exports = {
 				throw err;
 			});
 	}};
+=======
+  findResources: (post_id) => {
+    return knex.select('*').from('resources')
+    .whereIn('post_id', post_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findUserResources: function(user_id){
+    return knex.select('*').from('users')
+    	.leftJoin('resources', 'users.id', 'resources.user_created')
+    	.where('user_created', '=', user_id)
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findUserLikedResources: function(user_id){
+    return knex.select('*')
+      .from('users')
+      .innerJoin('likes', 'users.id', 'likes.user_id')
+      .where({ user_id: user_id })
+      .rightJoin('resources', 'resources.post_id', 'likes.post_id')
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+  },
+
+  findResourceRating: function(user_id){
+    return knex.select('*').from('users')
+      .leftJoin('ratings', 'users.id', 'ratings.user_id')
+      .rightJoin('resources', 'resources.post_id', 'ratings.post_id')
+      .where({ user_id: user_id })
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    },
+
+  findResourceComments: function(user_id){
+    return knex.select('*').from('users')
+      .leftJoin('comments', 'users.id', 'comments.user_id')
+      .rightJoin('resources', 'resources.post_id', 'comments.post_id')
+      .where({ user_id: user_id })
+      .returning('*')
+      .then((rows) => {
+        return rows;
+      }).catch((err) => {
+        throw err;
+      });
+    }
+
+}
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
