@@ -129,6 +129,11 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
+  // Search API key: AIzaSyDozAdVk-H_5_JuiAzAUa275tToyJrosk0
+  app.get("/search", (req, res) => {
+
+  });
+
   app.get("/ardelia", cacheView, (req, res) => {
     res.render("test_templates");
   });
@@ -156,6 +161,7 @@ const cacheView = (req, res, next) => {
   // view posts for specific subject
   app.get("/subjects/:subject_id", cacheView, (req, res) => {
     let subject = req.params.subject_id;
+    console.log(subject);
     //query subject from DB
     query.findSubjects(subject).then((result) => {
       let subject_id = result[0]['id'];
@@ -183,6 +189,7 @@ const cacheView = (req, res, next) => {
             if (postResults.length < 1) {
               return res.status(204).redirect('/');
             } else {
+              console.log(postResults);
               res.status(200)
               return res.json(postResults);
             }

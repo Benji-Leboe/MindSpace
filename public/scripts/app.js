@@ -4,8 +4,7 @@ $(function() {
   postRegister();
   postLogin();
   postLogout();
-  getSubject();
-  fetchPreview();
+  getSubjectList();
 });
 
 
@@ -21,23 +20,24 @@ function getUsers() {
   });
 };
 
-function getSubject() {
-  $('#subjectGrid').on('click', function(event) {
-    event.preventDefault();
-    var currentTarget = $(event.target);
-    var destination = $(currentTarget).parent('.card').attr('id');
-    $.ajax({
-      method: "GET",
-      url: `/subjects/${destination}`,
-      success: function(data) {
-        console.log("AJAX response data:", data);
-        //figure out async function handling
-      }
-    });
-  });
+
+async function getSubjectList() {
+
+  async function fetchPreview(url) {
+    console.log('function called');
+    let data = await $.getJSON(
+      `https://api.linkpreview.net?key=5ba7bba9b092023678bec1cebcf7cab6ea56b2ec203cf&q=${url}`);
+    return await data;
+  };
+
+  function destruct(resJSON) {
+    console.log(resJSON);
+    var { id, post_id, external_url, title, description, created_at, user_id } = resJSON;
+  
+  }
 
   $(document).ready(function() {
-    $('a.subject-link').on('click', function(event) {
+    $('#subjectGrid, a.subject-link').on('click', function(event) {
       event.preventDefault();
       var currentTarget = $(event.target);
       console.log(currentTarget);
@@ -45,36 +45,23 @@ function getSubject() {
       console.log(destination);
       $.ajax({
         method: "GET",
-        url: `/subjects/${destination}`,
-        success: function(data) {
-          //figure out async function handling
-          
-        }
+        url: `/subjects/${destination}`
+        }).done( async function(data) {
+          console.log("AJAX get data:", data);
+          let jsonArr = [];
+          for (let post of data) {
+            console.log(post);
+            let url = await post["external_url"];
+            let json = await fetchPreview(url);
+            console.log(json);
+            jsonArr.push(json);
+          }
+        });
       });
     });
-  });
-}
+  }
+  
 
-function fetchPreview(url) {
-  console.log('function called');
-  $.ajax({
-    url: `https://api.linkpreview.net?key=5ba7bba9b092023678bec1cebcf7cab6ea56b2ec203cf&q=${url}`,
-    type: "GET",
-    contentType: "application/json",
-    success: function(result){
-      console.log("request success");
-      return result;
-    }
-  });
-}
-
-function listBuilder(responseObject) {
-  console.log(responseObject);
-  var { id, post_id, external_url, title, description, created_at, user_id } = responseObject;
-  console.log(external_url);
-  var linkPreview = fetchPreview(external_url);
-  console.log(linkPreview);
-}
 
 
 function postRegister() {
@@ -137,7 +124,7 @@ function postRegister() {
 
 }
 
-function postLogout() {
+  function postLogout() {
   $('#nav-bar').on('click', '#logoutBtn', function(event) {
     event.preventDefault();
     console.log('Logout clicked')
@@ -148,12 +135,12 @@ function postLogout() {
         console.log('Logout successful');
         $('#login-register').css('display', 'block');
         $('#logout').css('display', 'none');
-      },
-      error: function(req, status, error) {
-        console.log("Req: " + req);
-        console.log("Status: " + status);
-        console.log("Error: " + error);
-      }
-    });
-  });
-}
+        },
+        error: function(req, status, error) {
+          console.log("Req: " + req);
+          console.log("Status: " + status);
+          console.log("Error: " + error);
+        }
+      });
+    })
+  }

@@ -10,14 +10,14 @@
   #side-nav-subjects {
     width: 80%;
     li a {
-      color: $color6;
+      color: $color5;
       text-decoration: none;
       font-size: 1.25rem;
       text-align: center;
       
       &:hover {
-        color: $color5;
-        transition: all 0.3s ease;
+        color: $color6;
+        transition: all 0.5s ease;
       }
     }
     .list-group-item {
