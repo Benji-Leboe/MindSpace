@@ -4,9 +4,6 @@
   opacity: 0.7;
 }
 
-// #stars-container span.active {
-//   color: yellow;
-// }
 
 
 #stars-container span { 
@@ -14,11 +11,11 @@
 }
 
 #stars-container span::before { 
-  content: "☆"; 
+  content: "🌚"; 
 }
 
 #stars-container span.active::before {
-  content: "★"; 
+  content: "🌝"; 
 }
 
 

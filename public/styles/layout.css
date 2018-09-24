@@ -169,11 +169,11 @@ div.card .card-img-overlay:hover {
 }
 
 #stars-container span::before {
-  content: "☆";
+  content: "🌚";
 }
 
 #stars-container span.active::before {
-  content: "★";
+  content: "🌝";
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
