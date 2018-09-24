@@ -178,7 +178,7 @@ function createUserProfile(profile) {
   let $profile = $('<div>').addClass('users container-fluid rounded').attr('id', 'profile-container');
   let $avatar = $('<img>').addClass('avatar col-sm mt-5 rounded-circle').attr('src', avatar);
   let $row = $('<span>').addClass('row justify-content-center');
-  let $name = $('<h2>').addClass('name mt-3 text-white').text(username);
+  let $name = $('<h3>').addClass('name mt-3 text-white').text(username);
   let $bio = $('<p>').addClass('bio text-white').text(bio);
   
   $profile.append($avatar, $row);

@@ -6,6 +6,9 @@
 @import "partials/test-templates";
 @import "partials/rohit";
 @import "partials/user_profile";
+@import "partials/other-profile";
+@import "partials/edit-profile";
+@import "partials/view-profile";
 
 html {
   font-size: 16px;
@@ -25,7 +28,12 @@ body {
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
   }
 
+  p.bio {
+    font-size: 0.75rem;
+  }
+
 }
+
 
 footer {
   background: url("../images/nav-bar.jpg");

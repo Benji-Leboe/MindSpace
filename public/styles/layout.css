@@ -99,6 +99,11 @@ div.card .card-img-overlay:hover {
   height: 8rem;
 }
 
+#nav-bar #nav-bar-contents {
+  position: relative;
+  display: flex;
+}
+
 #nav-bar #nav-bar-contents #mindspace-title {
   font-family: 'Montserrat', sans-serif !important;
   letter-spacing: 10px;
@@ -108,11 +113,12 @@ div.card .card-img-overlay:hover {
   text-align: center;
 }
 
-#nav-bar #nav-bar-contents #logout {
+#nav-bar #nav-bar-contents #logoutProfile {
   display: none;
 }
 
 #nav-bar #nav-bar-contents #navSearch input {
+  max-width: 10rem;
   background-color: rgba(220, 220, 240, 0.6);
   color: black;
 }
@@ -125,9 +131,20 @@ div.card .card-img-overlay:hover {
   opacity: 0.95;
 }
 
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+/* Container Styles */
 #activity-bar {
-  background-color: #353535;
-  margin-top: 0px;
+  background: url("../images/nav-bar.jpg");
+  min-height: 100%;
+  width: 15vw;
+}
+
+@media (max-width: 1200px) {
+  #activity-bar {
+    width: calc(15vw - .4vw);
+  }
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
@@ -144,6 +161,14 @@ div.card .card-img-overlay:hover {
 /* Container Styles */
 #view-post-modal {
   opacity: 0.7;
+}
+
+/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
+/* RGB */
+/* Font */
+/* Container Styles */
+div#profile-container {
+  background-color: rgba(49, 61, 78, 0.7);
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
@@ -172,6 +197,10 @@ body {
 
 body #subjectGrid .card {
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
+}
+
+body p.bio {
+  font-size: 0.75rem;
 }
 
 footer {
