@@ -22,7 +22,7 @@ module.exports = {
 	insertSource: function(resource, subject){
 	//insert resource and resource subject into database
 		knex("resources")
-		.returning("id")
+		.returning("post_id")
 		.as("post_id")
 		.insert(resource)
 		.then(([post_id]) => {

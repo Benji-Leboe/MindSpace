@@ -276,14 +276,14 @@ const cacheView = (req, res, next) => {
 
   });
 
-  // edit post
-  // (user can only edit own post) 
-  app.put('/post/edit/:post_id', (req, res) => {
+  // owner remove post from DB
+  app.delete('/post/delete/:post_id', (req, res) => {
 
   });
 
-  // owner remove post from DB
-  app.delete('/post/delete/:post_id', (req, res) => {
+  // edit post
+  // (user can only edit own post) 
+  app.put('/post/edit/:post_id', (req, res) => {
 
   });
 
