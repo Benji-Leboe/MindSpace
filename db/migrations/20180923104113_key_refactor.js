@@ -51,7 +51,7 @@ exports.up = function(knex, Promise) {
       table.primary(['user_id', 'post_id']);
     }).createTable('categories', function(table) {
       console.log("Categories table created");
-      table.string('post_id').unsigned().references('post_id').inTable( 'resources' );
+      table.string('post_id').unsigned().references('post_id').inTable( 'resources' ).onDelete('cascade');
       table.integer('subject_id').unsigned().references('id').inTable( 'subjects' );
       table.primary(['post_id', 'subject_id']);
 	})

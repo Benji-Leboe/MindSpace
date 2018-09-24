@@ -35,9 +35,11 @@ let newResource = {
 };
 
 let newSubject = {
-	"subject_name": "Sports999"
+	"subject_name": "Sports878"
 };
-update.updateSubject(newSubject);
+
+// update.deletePost("s7ehj2w7");
+// update.updateSubject(newSubject, 15);
 // query.findResourceComments(userid).then(function(result) {
 //   console.log("let's pass this to html:", result);
 // });
@@ -45,6 +47,6 @@ update.updateSubject(newSubject);
 //   console.log("let's pass this to html:", result);
 // });
 
-// insert.insertSource(resource, subject);
+insert.insertSource(resource, subject);
 
 // console.log(insert.name);

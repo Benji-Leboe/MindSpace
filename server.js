@@ -41,6 +41,7 @@ const knexLogger           = require('knex-logger');
 const helper               = require('./helper_functions/helpers');
 const query                = require('./db/db_data_query_functions.js');
 const insert               = require('./db/db_data_insert_functions.js');
+const update               = require('./db/db_data_update_functions.js');
 
 
 // Mount router and user query routes
@@ -224,7 +225,7 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-    const { external_url, title, description, user_id, subject_name } = req.body;
+    const { external_url, title, description, user_created, subject_name } = req.body;
     let post_id = helper.generateRandomString();
 
     let resource = {
@@ -232,7 +233,7 @@ const cacheView = (req, res, next) => {
       post_id,
       title,
       description,
-      user_id
+      user_created
     };
     let subject = {
       subject_name
@@ -279,18 +280,39 @@ const cacheView = (req, res, next) => {
   // owner remove post from DB
   app.delete('/post/delete/:post_id', (req, res) => {
 
+    const post_id = req.params.post_id;
+
+    update.deletePost(post_id);
+    res.status(201).send();
+
   });
 
   // edit post
   // (user can only edit own post) 
   app.put('/post/edit/:post_id', (req, res) => {
+    
+    //const { external_url, post_id, title, description, user_created, subject_name } = req.params;
 
+    let newResource = {
+      external_url,
+      post_id,
+      title,
+      description,
+      user_created
+    };
+    update.updatePost(newResource);
+    res.status(201).send();
   });
 
   // edit comment
   // (user can only edit own comment)
   app.put('comment/:comment_id', (req, res) => {
+    const { content, post_id } = req.body;
+    let id = post_id;
+    let newComment = {content};
 
+    update.updateComment(newComment, id);
+    res.status(201).send();
   });
 
   app.listen(PORT, () => {

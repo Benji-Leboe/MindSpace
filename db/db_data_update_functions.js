@@ -9,17 +9,49 @@ module.exports = {
 	updatePost: function(newResource){
 		//update resource and resource subject into database
 		const post_id = newResource.post_id;
-		console.log(newResource);
 		knex('resources')
 		.where('post_id', '=', post_id)
 		.update(newResource)
+		.then((rows) => {
+           return rows; 
+        }).catch((err) => {
+           throw err;
+        }); 
 	},
 
-	updateSubject: function(newSubject){
+	updateSubject: function(newSubject, id){
 		//update resource and resource subject into database
-		console.log(newSubject);
-		knex('subjects')
-		.where('subject_name', '=', 'Sports333')
+		knex.select('*').from('subjects')
+		.where('id', '=', id)
 		.update(newSubject)
+        .then((rows) => {
+           return rows; 
+        }).catch((err) => {
+           throw err;
+        });    
+	},
+
+	updateComment: function(newComment, id){
+		//update resource and resource subject into database
+		knex.select('*').from('comments')
+		.where('id', '=', id)
+		.update(newComment)
+        .then((rows) => {
+           return rows; 
+        }).catch((err) => {
+           throw err;
+        });    
+	},
+
+	deletePost: function(post_id){
+		//update resource and resource subject into database
+		knex.select('*').from('resources')
+		.where('post_id', '=', post_id)
+		.del()
+        .then((rows) => {
+           return rows; 
+        }).catch((err) => {
+           throw err;
+        });    
 	},
 }
