@@ -34,7 +34,7 @@ module.exports = {
 	updateComment: function(newComment, id){
 		//update resource and resource subject into database
 		knex.select('*').from('comments')
-		.where('id', '=', id)
+		.where('post_id', '=', id)
 		.update(newComment)
         .then((rows) => {
            return rows; 

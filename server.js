@@ -268,11 +268,9 @@ const cacheView = (req, res, next) => {
   // submit comment
   app.post('/comment', (req, res) => {
 
-    const userid = req.body.user_id;
-    const postid = req.body.post_id;
-    const comment = req.body.comment;
+    const { user_id, post_id, comment } = req.body;
 
-    insert.insertComment(userid, postid, comment);
+    insert.insertComment(user_id, post_id, comment);
     res.status(201).send();
 
   });
@@ -290,8 +288,8 @@ const cacheView = (req, res, next) => {
   // edit post
   // (user can only edit own post) 
   app.put('/post/edit/:post_id', (req, res) => {
-    
-    //const { external_url, post_id, title, description, user_created, subject_name } = req.params;
+    let post_id = req.params.post_id;
+    const { external_url, title, description, user_created} = req.body;
 
     let newResource = {
       external_url,
@@ -306,10 +304,13 @@ const cacheView = (req, res, next) => {
 
   // edit comment
   // (user can only edit own comment)
-  app.put('comment/:comment_id', (req, res) => {
-    const { content, post_id } = req.body;
-    let id = post_id;
-    let newComment = {content};
+  app.put('/comment/:comment_id', (req, res) => {
+
+    const { content } = req.body;
+    let id = req.params.comment_id;
+    let newComment = {
+      content
+    }
 
     update.updateComment(newComment, id);
     res.status(201).send();
