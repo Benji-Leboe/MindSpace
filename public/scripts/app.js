@@ -7,6 +7,7 @@ $(function() {
   getSubject();
   fetchPreview();
   renderUserProfile(user);
+  createStars();
 });
 
 var user = {
@@ -185,3 +186,14 @@ function createUserProfile(profile) {
   $row.append($name, $bio)
   return $profile;
 };
+
+function createStars() { 
+  $('#stars-container').on('click', function (e) {
+  let action = 'add'
+  for (let span of this.children) {
+    span.classList[action] ('active');
+    if (span === e.target) action = 'remove';
+  } 
+});
+}
+

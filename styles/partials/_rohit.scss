@@ -4,6 +4,25 @@
   opacity: 0.7;
 }
 
+// #stars-container span.active {
+//   color: yellow;
+// }
+
+
+#stars-container span { 
+  font-size: 24px; 
+}
+
+#stars-container span::before { 
+  content: "☆"; 
+}
+
+#stars-container span.active::before {
+  content: "★"; 
+}
+
+
+
 
 // .modal.fade .modal-dialog {
 //   -webkit-transition: -webkit-transform 0.3s ease-out;

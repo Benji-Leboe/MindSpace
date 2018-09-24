@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
 /* RGB */
 /* Font */
@@ -163,12 +164,16 @@ div.card .card-img-overlay:hover {
   opacity: 0.7;
 }
 
-/* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
-/* RGB */
-/* Font */
-/* Container Styles */
-div#profile-container {
-  background-color: rgba(49, 61, 78, 0.7);
+#stars-container span {
+  font-size: 24px;
+}
+
+#stars-container span::before {
+  content: "☆";
+}
+
+#stars-container span.active::before {
+  content: "★";
 }
 
 /* Coolors Exported Palette - coolors.co/0b075a-233855-284776-8e94be-c5c4cc */
@@ -197,10 +202,6 @@ body {
 
 body #subjectGrid .card {
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.9);
-}
-
-body p.bio {
-  font-size: 0.75rem;
 }
 
 footer {
