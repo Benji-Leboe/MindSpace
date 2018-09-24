@@ -138,19 +138,24 @@ const cacheView = (req, res, next) => {
   });
 
   // view profile- bio etc.
-  app.get("/profile/:user_id", cacheView, (req, res) => {
+  app.get("/profile/:email", cacheView, (req, res) => {
+    const email = req.params.email;
+    query.findUser(email).then((result) => {
+      console.log("let's pass this to html:", result);
+    });
     res.render("user_profile");
   });
 
   // view main user page w/ posts and likes
   app.get("/posts/:user_id", cacheView, (req, res) => {
     const user_id = req.params.user_id;
-    console.log(userid);
     query.findUserResources(user_id).then((result) => {
       console.log("let's pass this to html:", result);
     });
-    res.send('hello world');
-    //res.render("user_posts");
+    query.findUserLikedResources(user_id).then((result) => {
+      console.log("let's pass this to html:", result);
+    });
+    res.render("user_posts");
   });
 
   // view posts for specific subject
@@ -241,9 +246,9 @@ const cacheView = (req, res, next) => {
   // (user cannot like own post)
   app.put('/like', (req, res) => {
 
-    const { user_id, resource_id } = req.body;
+    const { user_id, post_id } = req.body;
 
-    insert.insertLike(user_id, resource_id);
+    insert.insertLike(user_id, post_id);
     res.status(201).send();
 
   });
@@ -252,9 +257,9 @@ const cacheView = (req, res, next) => {
   // (user cannot rate own post) 
   app.put('/rate', (req, res) => {
 
-    const { user_id, resource_id, rating } = req.body;
+    const { user_id, post_id, rating } = req.body;
 
-    insert.insertRating(user_id, resource_id, rating);
+    insert.insertRating(user_id, post_id, rating);
     res.status(201).send();
 
   });
@@ -263,10 +268,10 @@ const cacheView = (req, res, next) => {
   app.post('/comment', (req, res) => {
 
     const userid = req.body.user_id;
-    const resourceid = req.body.resource_id;
+    const postid = req.body.post_id;
     const comment = req.body.comment;
 
-    insert.insertComment(userid, resourceid, comment);
+    insert.insertComment(userid, postid, comment);
     res.status(201).send();
 
   });

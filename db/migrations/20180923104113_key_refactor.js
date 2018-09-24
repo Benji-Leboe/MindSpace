@@ -21,39 +21,39 @@ exports.up = function(knex, Promise) {
     }).createTable('resources', function(table) {
       console.log("Resources table created");
       table.increments('id');
-      table.string('post_id');
+      table.string('post_id').unique();
       table.string('external_url');
       table.string('title');
       table.string('description');
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
-      table.uuid('user_id').unsigned().references('id').inTable('users');
+      table.uuid('user_created').unsigned().references('id').inTable('users');
     }).createTable('subjects', function(table) {
       console.log("Subjects table created");
       table.increments('id');
       table.string('subject_name').notNullable().unique();
     }).createTable('likes', function(table){
       console.log("Likes table created");
-      table.integer('resource_id').unsigned().references('id').inTable( 'resources' );
+      table.string('post_id').unsigned().references('post_id').inTable( 'resources' );
       table.uuid('user_id').unsigned().references('id').inTable( 'users' );
-      table.primary(['user_id', 'resource_id']);
+      table.primary(['user_id', 'post_id']);
     }).createTable('ratings', function(table) {
       console.log("Ratings table created");
       table.integer('stars');
-      table.integer('resource_id').unsigned().references('id').inTable( 'resources' );
+      table.string('post_id').unsigned().references('post_id').inTable( 'resources' );
       table.uuid('user_id').unsigned().references('id').inTable( 'users' );
-      table.primary(['user_id', 'resource_id'])
+      table.primary(['user_id', 'post_id'])
     }).createTable('comments', function(table) {
       console.log("Comments table created");
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
       table.string('content');
-      table.integer('resource_id').unsigned().references('id').inTable( 'resources' );
+      table.string('post_id').unsigned().references('post_id').inTable( 'resources' );
       table.uuid('user_id').unsigned().references('id').inTable( 'users' );
-      table.primary(['user_id', 'resource_id']);
+      table.primary(['user_id', 'post_id']);
     }).createTable('categories', function(table) {
       console.log("Categories table created");
-      table.integer('resource_id').unsigned().references('id').inTable( 'resources' );
+      table.string('post_id').unsigned().references('post_id').inTable( 'resources' );
       table.integer('subject_id').unsigned().references('id').inTable( 'subjects' );
-      table.primary(['resource_id', 'subject_id']);
+      table.primary(['post_id', 'subject_id']);
 	})
 	
   ]);
