@@ -187,6 +187,7 @@ function createUserProfile(profile) {
   return $profile;
 };
 
+
 function createStars() { 
   $('#stars-container').on('click', function (e) {
   let action = 'add'
