@@ -41,8 +41,7 @@ const knexLogger           = require('knex-logger');
 const helper               = require('./helper_functions/helpers');
 const query                = require('./db/db_data_query_functions.js');
 const insert               = require('./db/db_data_insert_functions.js');
-const get                  = require('simple-get');
-const request              = require('request');
+const update               = require('./db/db_data_update_functions.js');
 
 
 // Mount router and user query routes
@@ -145,10 +144,14 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
+<<<<<<< HEAD
   app.get("/search", (req, res) => {
 
   });
 
+=======
+  // test templates
+>>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
   app.get("/ardelia", cacheView, (req, res) => {
     res.render("test_templates");
   });
@@ -157,20 +160,37 @@ const cacheView = (req, res, next) => {
     res.render("rohit");
   });
 
+  app.get("/edit-profile", cacheView, (req, res) => {
+    res.render("edit-profile");
+  });
+
+  app.get("/view-profile", cacheView, (req, res) => {
+    res.render("view-profile");
+  });
+
+
+
+
+
   // view profile- bio etc.
-  app.get("/profile/:user_id", cacheView, (req, res) => {
+  app.get("/profile/:email", cacheView, (req, res) => {
+    const email = req.params.email;
+    query.findUser(email).then((result) => {
+      console.log("let's pass this to html:", result);
+    });
     res.render("user_profile");
   });
 
   // view main user page w/ posts and likes
   app.get("/posts/:user_id", cacheView, (req, res) => {
     const user_id = req.params.user_id;
-    console.log(userid);
     query.findUserResources(user_id).then((result) => {
       console.log("let's pass this to html:", result);
     });
-    res.send('hello world');
-    //res.render("user_posts");
+    query.findUserLikedResources(user_id).then((result) => {
+      console.log("let's pass this to html:", result);
+    });
+    res.render("user_posts");
   });
 
   // view posts for specific subject
@@ -240,7 +260,7 @@ const cacheView = (req, res, next) => {
   // submit post, add subject tags, assign unique ID and reference user ID
   // store in DB
   app.post('/post', (req, res) => {
-    const { external_url, title, description, user_id, subject_name } = req.body;
+    const { external_url, title, description, user_created, subject_name } = req.body;
     let post_id = helper.generateRandomString();
 
     let resource = {
@@ -248,7 +268,7 @@ const cacheView = (req, res, next) => {
       post_id,
       title,
       description,
-      user_id
+      user_created
     };
     let subject = {
       subject_name
@@ -262,9 +282,9 @@ const cacheView = (req, res, next) => {
   // (user cannot like own post)
   app.put('/like', (req, res) => {
 
-    const { user_id, resource_id } = req.body;
+    const { user_id, post_id } = req.body;
 
-    insert.insertLike(user_id, resource_id);
+    insert.insertLike(user_id, post_id);
     res.status(201).send();
 
   });
@@ -273,9 +293,9 @@ const cacheView = (req, res, next) => {
   // (user cannot rate own post) 
   app.put('/rate', (req, res) => {
 
-    const { user_id, resource_id, rating } = req.body;
+    const { user_id, post_id, rating } = req.body;
 
-    insert.insertRating(user_id, resource_id, rating);
+    insert.insertRating(user_id, post_id, rating);
     res.status(201).send();
 
   });
@@ -283,11 +303,19 @@ const cacheView = (req, res, next) => {
   // submit comment
   app.post('/comment', (req, res) => {
 
-    const userid = req.body.user_id;
-    const resourceid = req.body.resource_id;
-    const comment = req.body.comment;
+    const { user_id, post_id, comment } = req.body;
 
-    insert.insertComment(userid, resourceid, comment);
+    insert.insertComment(user_id, post_id, comment);
+    res.status(201).send();
+
+  });
+
+  // owner remove post from DB
+  app.delete('/post/delete/:post_id', (req, res) => {
+
+    const post_id = req.params.post_id;
+
+    update.deletePost(post_id);
     res.status(201).send();
 
   });
@@ -295,18 +323,32 @@ const cacheView = (req, res, next) => {
   // edit post
   // (user can only edit own post) 
   app.put('/post/edit/:post_id', (req, res) => {
+    let post_id = req.params.post_id;
+    const { external_url, title, description, user_created} = req.body;
 
-  });
-
-  // owner remove post from DB
-  app.delete('/post/delete/:post_id', (req, res) => {
-
+    let newResource = {
+      external_url,
+      post_id,
+      title,
+      description,
+      user_created
+    };
+    update.updatePost(newResource);
+    res.status(201).send();
   });
 
   // edit comment
   // (user can only edit own comment)
-  app.put('comment/:comment_id', (req, res) => {
+  app.put('/comment/:comment_id', (req, res) => {
 
+    const { content } = req.body;
+    let id = req.params.comment_id;
+    let newComment = {
+      content
+    }
+
+    update.updateComment(newComment, id);
+    res.status(201).send();
   });
 
 })}

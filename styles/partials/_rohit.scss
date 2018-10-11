@@ -1,16 +1,33 @@
 @import 'palette';
 
 #view-post-modal {
-  background-color: $color2;
+  opacity: 0.7;
 }
 
-.modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-     -moz-transition: -moz-transform 0.3s ease-out;
-       -o-transition: -o-transform 0.3s ease-out;
-          transition: transform 0.3s ease-out;
+
+
+#stars-container span { 
+  font-size: 24px; 
 }
 
-.modal.in .modal-dialog {
-
+#stars-container span::before { 
+  content: "🌚"; 
 }
+
+#stars-container span.active::before {
+  content: "🌝"; 
+}
+
+
+
+
+// .modal.fade .modal-dialog {
+//   -webkit-transition: -webkit-transform 0.3s ease-out;
+//      -moz-transition: -moz-transform 0.3s ease-out;
+//        -o-transition: -o-transform 0.3s ease-out;
+//           transition: transform 0.3s ease-out;
+// }
+
+// .modal.in .modal-dialog {
+
+// }
