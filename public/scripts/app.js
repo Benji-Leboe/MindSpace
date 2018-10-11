@@ -4,14 +4,9 @@ $(function() {
   postRegister();
   postLogin();
   postLogout();
-<<<<<<< HEAD
-  getSubjectList();
-=======
-  getSubject();
   fetchPreview();
   renderUserProfile(user);
   createStars();
->>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
 });
 
 var user = {
@@ -159,17 +154,6 @@ function postRegister() {
         console.log('Logout successful');
         $('#login-register').css('display', 'block');
         $('#logout').css('display', 'none');
-<<<<<<< HEAD
-        },
-        error: function(req, status, error) {
-          console.log("Req: " + req);
-          console.log("Status: " + status);
-          console.log("Error: " + error);
-        }
-      });
-    })
-  }
-=======
       },
       error: function(req, status, error) {
         console.log("Req: " + req);
@@ -210,4 +194,3 @@ function createStars() {
 });
 }
 
->>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0

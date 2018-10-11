@@ -171,14 +171,10 @@ const cacheView = (req, res, next) => {
     res.render("index");
   });
 
-<<<<<<< HEAD
   app.get("/search", (req, res) => {
 
   });
 
-=======
-  // test templates
->>>>>>> 56d43eaa9eb158d116024ce6cb00c7b734a179e0
   app.get("/ardelia", cacheView, (req, res) => {
     res.render("test_templates");
   });
